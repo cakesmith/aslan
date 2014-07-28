@@ -1,0 +1,36 @@
+Index: bower_components/angular-scroll/angular-scroll.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- bower_components/angular-scroll/angular-scroll.js	(revision )
++++ bower_components/angular-scroll/angular-scroll.js	(revision )
+@@ -14,7 +14,7 @@
+   'duScroll.scrollContainer',
+   'duScroll.spyContext',
+   'duScroll.scrollHelpers'
+-]).value('duScrollDuration', 350).value('duScrollSpyWait', 100).value('duScrollGreedy', false).value('duScrollEasing', duScrollDefaultEasing);
++]).value('duScrollDuration', 350).value('duScrollSpyWait', 100).value('duScrollGreedy', false).value('duScrollEasing', duScrollDefaultEasing).value('duScrollOffset', null);
+ angular.module('duScroll.scrollHelpers', ['duScroll.requestAnimation']).run([
+   '$window',
+   '$q',
+@@ -385,7 +385,8 @@
+ ]).directive('duSmoothScroll', [
+   'duScrollDuration',
+   'scrollContainerAPI',
+-  function (duScrollDuration, scrollContainerAPI) {
++  'duScrollOffset',
++  function (duScrollDuration, scrollContainerAPI, duScrollOffset) {
+     'use strict';
+     return {
+       link: function ($scope, $element, $attr) {
+@@ -399,7 +400,7 @@
+             e.stopPropagation();
+           if (e.preventDefault)
+             e.preventDefault();
+-          var offset = $attr.offset ? parseInt($attr.offset, 10) : 0;
++          var offset = duScrollOffset ? duScrollOffset : ($attr.offset ? parseInt($attr.offset, 10) : 0);
+           var duration = $attr.duration ? parseInt($attr.duration, 10) : duScrollDuration;
+           var container = scrollContainerAPI.getContainer($scope);
+           container.scrollToElement(angular.element(target), isNaN(offset) ? 0 : offset, isNaN(duration) ? 0 : duration);
+\ No newline at end of file
