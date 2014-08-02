@@ -5,7 +5,7 @@
   text-transform: uppercase;
   font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
-  background-color: #000;
+  background-color: $nearBlack;
   z-index: 99;
 
   .dropdown-menu {
@@ -23,7 +23,7 @@
         -webkit-transition: background .3s ease-in-out;
         -moz-transition: background .3s ease-in-out;
         transition: background .3s ease-in-out;
-        color: #fff;
+        color: $nearWhite;
         font-size: 2rem;
       }
     }
@@ -43,7 +43,7 @@
   }
 
   .navbar-brand {
-    color: #fff;
+    color: $nearWhite;
     font-weight: 700;
   }
 
@@ -79,13 +79,13 @@
     right: auto;
     background-color: rgba(0, 0, 0, .3);
     &.darken {
-      background-color: black;
+      background-color: $nearBlack;
     }
   }
 
   .darken {
     padding: 0;
-    background-color: #000;
+    background-color: $nearBlack;
   }
 
   .navbar.darken {

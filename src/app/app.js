@@ -60,28 +60,27 @@
       });
     });
 
+    var nav, dropDown;
 
+    nav = dropDown = $scope.nav = $scope.dropDown = {};
 
-    $scope.nav = $scope.dropDown= {};
-
-    $scope.nav.isCollapsed = true;
-
-    $scope.dropDown.isOpen = false;
+    nav.isCollapsed = true;
+    dropDown.isOpen = false;
 
     angular.element($window).bind('scroll', function () {
-      $scope.nav.darken = this.pageYOffset > 50;
+      nav.darken = this.pageYOffset > 50;
       $scope.$apply();
     });
 
     $scope.navClick = function($event) {
       $event.preventDefault();
       $event.stopPropagation();
-      $scope.nav.isCollapsed = true;
-      $scope.dropDown.isOpen = false;
+      nav.isCollapsed = true;
+      dropDown.isOpen = false;
     };
 
     $scope.navToggle = function() {
-      $scope.nav.isCollapsed = !$scope.nav.isCollapsed;
+      nav.isCollapsed = !nav.isCollapsed;
     };
 
   }]);

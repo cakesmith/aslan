@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="aslan">
+<html ng-app="aslan" id="top">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="initial-scale=1"/>
@@ -17,7 +17,7 @@
   <!-- endinject -->
 </head>
 
-<body ng-controller="AppCtrl" id="top">
+<body ng-controller="AppCtrl">
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-class="{darken: nav.darken}">
   <div class="container-fluid">
@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#top" ng-click="navClick($event)" du-smooth-scroll offset="0">Aslan Electric,
+      <a class="navbar-brand" href="#top" ng-click="navClick($event)" du-smooth-scroll>Aslan Electric,
         Inc.</a>
     </div>
 
@@ -42,17 +42,17 @@
 
           <a class="dropdown-toggle" href="">Services <span class="glyphicon glyphicon-chevron-down"></span></a>
           <ul class="dropdown-menu" ng-class="{darken: nav.darken}" role="menu">
-        <li ng-repeat="service in services">
-          <a ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll>{{ service.text }}</a>
+            <li ng-repeat="service in services">
+              <a ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll>{{ service.text }}</a>
+            </li>
+          </ul>
         </li>
-      </ul>
-      </li>
-      <li>
-        <a href="#about" ng-click="navClick($event)" du-smooth-scroll>About</a>
-      </li>
-      <li>
-        <a href="#contact" ng-click="navClick($event)" du-smooth-scroll>Contact</a>
-      </li>
+        <li>
+          <a href="#about" ng-click="navClick($event)" du-smooth-scroll>About</a>
+        </li>
+        <li>
+          <a href="#contact" ng-click="navClick($event)" du-smooth-scroll>Contact</a>
+        </li>
 
       </ul>
 
@@ -66,17 +66,16 @@
 <carousel interval="myInterval">
 
   <div class="loading" load-spinner>
-<p>    LOADING
-</p>  </div>
+  </div>
 
   <slide ng-repeat="slide in slides" active="slide.active">
 
-    <div class="bg" style="background-image:url({{slide.image}});">
+     <div class="bg" style="background-image:url({{slide.image}});">
 
       <div class="tint"></div>
 
     </div>
-    <div class="carousel-caption">
+    <div class="carousel-caption" ng-cloak>
       <p>{{slide.text}}</p>
 
     </div>
@@ -178,7 +177,7 @@
 </div>
 
 <div class="preloader">
-  <img ng-repeat="slide in slides" ng-src="{{ slide.image }}" width="1" height="1" />
+  <img ng-repeat="slide in slides" ng-src="{{ slide.image }}" width="1" height="1"/>
 </div>
 
 <!-- inject:vendor:js -->
