@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400);
+
+body {
+  //  padding: 50px;
+  font: 20px/150% "Helvetica Neue", "Lucida Grande", Verdana, sans-serif;
+  color: #666;
+  background: #fcfcfc;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+
+@media (max-width: 767px) {
+
+  p {
+    margin: 0 0 35px;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+}
+
+@import "navbar";
+@import "carousel";

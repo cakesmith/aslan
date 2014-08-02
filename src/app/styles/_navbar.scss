@@ -4,42 +4,57 @@
   border-bottom: 1px solid rgba(255, 255, 255, .3);
   text-transform: uppercase;
   font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 2.5rem;
   background-color: #000;
   z-index: 99;
+
+
+
+.dropdown-menu {
+  .darken {
+    background-color: black;
+  }
 }
 
-.navbar-inverse .navbar-nav li a {
-  -webkit-transition: background .3s ease-in-out;
-  -moz-transition: background .3s ease-in-out;
-  transition: background .3s ease-in-out;
-  color: #fff;
+
+  .navbar-nav li a {
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+    color: #fff;
+    font-size: 2rem;
+
+  }
+
+  .navbar-brand:focus,
+  .navbar-brand:active,
+  .navbar-nav li a:focus,
+  .navbar-nav li a:active {
+    outline: none;
+  }
+
+  .navbar-nav li a:hover,
+  .navbar-nav .active {
+    outline: none;
+    background-color: rgba(255, 255, 255, .3);
+  }
+  .navbar-brand {
+    color: #fff;
+    font-weight: 700;
+  }
+
 }
 
-.navbar-inverse .navbar-brand:focus,
-.navbar-inverse .navbar-brand:active,
-.navbar-inverse .navbar-nav li a:focus,
-.navbar-inverse .navbar-nav li a:active {
-  outline: none;
+.caret {
+  height: 1.5rem;
+  width: 1.5rem;
 }
+.nav {
+  .dropdown-toggle {
+    display: inline-block;
 
-.navbar-inverse .navbar-nav li a:hover,
-.navbar-inverse .navbar-nav .active {
-  outline: none;
-  background-color: rgba(255, 255, 255, .3);
+  }
 }
-
-.navbar-brand {
-  font-weight: 700;
-}
-
-.navbar-inverse .navbar-brand {
-  color: #fff;
-}
-
-.nav > li > a {
-  display: inline-block;
-}
-
 @media (min-width: 767px) {
   .navbar-inverse {
     padding: 20px 0;
@@ -71,3 +86,4 @@
   }
 
 }
+

@@ -1,163 +1,187 @@
 <!DOCTYPE html>
 <html ng-app="aslan">
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="initial-scale=1"/>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="initial-scale=1"/>
 
-    <title>Aslan Electric Inc.</title>
-    <description></description>
+  <title>Aslan Electric Inc.</title>
+  <description></description>
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
+  <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
 
-    <!-- inject:vendor:css -->
-    <!-- endinject -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/styles/navbar.css">
-    <!-- endinject -->
-  </head>
+  <!-- inject:vendor:css -->
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/css/styles/app.css">
+  <!-- endinject -->
+</head>
 
-  <body ng-controller="AppCtrl" id="top">
+<body ng-controller="AppCtrl" id="top">
 
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-class="{darken: nav.darken}">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" ng-click="navToggle()">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#top" ng-click="navClick($event)" du-smooth-scroll offset="0">Aslan Electric, Inc.</a>
-      </div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-class="{darken: nav.darken}">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-click="navToggle()">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#top" ng-click="navClick($event)" du-smooth-scroll offset="0">Aslan Electric,
+        Inc.</a>
+    </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" collapse="nav.isCollapsed">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" collapse="nav.isCollapsed">
 
-        <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
 
-          <li dropdown is-open="dropDown.isOpen"  ng-controller="Services">
+        <li dropdown is-open="dropDown.isOpen" ng-controller="Services">
 
-            <a class="dropdown-toggle" href="">Services</a><span class="caret"></span>
-            <ul class="dropdown-menu" role="menu">
-              <li ng-repeat="service in services">
-                <a ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll>{{ service.text }}</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#about" ng-click="navClick($event)" du-smooth-scroll>About</a>
-          </li>
-          <li>
-            <a href="#contact" ng-click="navClick($event)" du-smooth-scroll>Contact</a>
-          </li>
+          <a class="dropdown-toggle" href="">Services <span class="glyphicon glyphicon-chevron-down"></span></a>
+          <ul class="dropdown-menu" ng-class="{darken: !nav.darken}" role="menu">
+        <li ng-repeat="service in services">
+          <a ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll>{{ service.text }}</a>
+        </li>
+      </ul>
+      </li>
+      <li>
+        <a href="#about" ng-click="navClick($event)" du-smooth-scroll>About</a>
+      </li>
+      <li>
+        <a href="#contact" ng-click="navClick($event)" du-smooth-scroll>Contact</a>
+      </li>
 
-        </ul>
+      </ul>
 
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi architecto aspernatur autem corporis deserunt incidunt ipsa minus nobis odio odit, possimus quas quia quis reprehenderit rerum sit ullam voluptatibus!
-
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi atque beatae consectetur culpa dolorem ducimus eligendi fugit impedit labore libero maxime nihil, obcaecati porro repellendus repudiandae velit veritatis vero.
-
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id impedit maiores pariatur qui, ratione unde ut voluptas voluptate. Delectus dolores error ex illo officiis quaerat quis ratione tempora totam, voluptas!
-
-  <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi aperiam beatae corporis dicta eaque earum
-    est eum, hic molestiae mollitia natus nemo, nostrum perferendis quam quisquam temporibus unde voluptates.
+    </div>
+    <!-- /.navbar-collapse -->
   </div>
-  <div>A accusantium adipisci asperiores, assumenda autem dignissimos dolorem dolorum eaque earum eligendi eveniet
-    exercitationem fugit illo laboriosam nesciunt non numquam omnis placeat quam qui quibusdam reiciendis repellendus
-    suscipit tempora velit?
-  </div>
-  <div>A aliquid at commodi error, esse eveniet facilis fuga harum laudantium magni nam officiis perspiciatis, quo, sed
-    ullam vitae voluptate? Illo, natus, nobis? Amet eius est hic, in minus tenetur.
-  </div>
-  <div id="industrial">
-    INDUSTRIAL
+  <!-- /.container-fluid -->
+</nav>
 
-    Aliquid cupiditate inventore modi praesentium voluptates? Amet assumenda delectus labore nemo nihil quam quod!
-    Beatae distinctio laboriosam laudantium odio perspiciatis possimus, quos totam. Accusamus itaque iure mollitia quis.
-    Debitis, esse.
-  </div>
-  <div>Consequuntur cupiditate doloribus eum expedita ipsum libero minima nobis numquam odit, repellat rerum sapiente
-    similique, ullam vero voluptatem! Ab amet culpa debitis earum exercitationem iusto maiores molestias saepe sit
-    tenetur.
-  </div>
-  <div>Deleniti, magnam nulla. Laborum, modi, quos. Atque distinctio eius mollitia tempore vitae! Aut commodi,
-    distinctio doloribus facilis minus nemo nesciunt nostrum perspiciatis porro, possimus, praesentium quasi rerum saepe
-    temporibus unde?
-  </div>
-  <div id="commercial">
-    COMMERCIAL
+<carousel interval="myInterval">
+  <slide ng-repeat="slide in slides" active="slide.active">
+    <div class="preloader">
+      <img ng-src="{{ slide.img }}" width="1" height="1" alt="{{ slide.text }}"/>
+    </div>
+    <div class="bg" style="background-image:url({{slide.image}});">
+      <div class="tint"></div>
+    </div>
+    <div class="carousel-caption">
+      <p>{{slide.text}}</p>
+    </div>
+  </slide>
+</carousel>
 
-    Exercitationem iusto numquam perspiciatis? Alias, consequatur consequuntur deleniti dignissimos dolores inventore
-    modi? Accusamus aperiam at beatae consequatur cum doloribus inventore laudantium minus modi nobis odio possimus
-    reprehenderit sapiente, sed voluptatem.
-  </div>
-  <div>Asperiores eligendi ex quis. Ab assumenda doloribus, ea eaque eius et ex, expedita illum in ipsum magnam magni
-    nobis odit praesentium quasi reiciendis sunt tempora, ut velit veritatis. Et, quos!
-  </div>
-  <div id="about">
-    ABOUT
-
-    Autem earum eveniet ipsa labore nihil. Cum dolores exercitationem porro repudiandae rerum suscipit temporibus
-    tenetur totam ut voluptatum. Aperiam dolorem ea esse fugit itaque iusto odio perspiciatis quam tenetur velit.
-  </div>
-  <div>Amet cumque dicta dolor eaque neque sit voluptate? A accusamus aut deleniti dicta doloremque ducimus eligendi et
-    hic libero maxime nisi numquam porro quaerat reiciendis vel veritatis vitae, voluptatem voluptatibus.
-  </div>
-  <div>At est excepturi explicabo in numquam quibusdam voluptates! Aliquam amet architecto, at consectetur distinctio
-    dolore enim eum ex explicabo ipsam labore minima mollitia nobis optio porro quidem rem repudiandae vitae?
-  </div>
-  <div>Aperiam at corporis debitis exercitationem labore laborum quisquam rem tenetur vel veniam. Atque commodi dolores
-    eos excepturi, ipsa iusto laborum minima nesciunt non nostrum, perspiciatis placeat porro quia, recusandae vero.
-  </div>
-  <div>Ad architecto aspernatur beatae culpa debitis distinctio dolorem ducimus eaque hic iure labore magnam minus
-    molestias, natus nemo nobis non nulla perspiciatis possimus quasi quis quo quod reprehenderit saepe veniam?
-  </div>
-  <div>Assumenda at atque consequuntur culpa cupiditate deleniti dolore, eius error est explicabo illo impedit mollitia
-    nam nesciunt nihil nulla possimus provident quaerat quasi quia quis quo ratione repudiandae sequi voluptatibus!
-  </div>
-  <div>Delectus deleniti dignissimos ducimus eligendi et eveniet, labore magnam magni natus quos repellat reprehenderit
-    saepe totam. Amet commodi cumque dolore exercitationem expedita harum hic incidunt maxime reiciendis, similique
-    sint, soluta!
-  </div>
-  <div>Eum excepturi exercitationem iste pariatur ut! Asperiores consectetur hic nesciunt nostrum praesentium qui quod?
-    Aspernatur beatae commodi officia officiis qui quis sit voluptatem. Debitis, expedita maxime placeat quaerat
-    veritatis voluptates.
-  </div>
-  <div id="contact">
-    CONTACT
-
-    A ab, animi, architecto asperiores at blanditiis, consectetur culpa deserunt dicta distinctio ea et facere fugit
-    iusto modi nesciunt nobis obcaecati perspiciatis placeat porro quae quas repellendus sit tenetur ut!
-  </div>
-  <div>Ad amet consequuntur dolores excepturi impedit iusto, laudantium mollitia, odio optio totam, ullam vero! Aliquam
-    aperiam aut beatae culpa deserunt dolore eaque incidunt, nihil perferendis ratione repellat ullam voluptates
-    voluptatum.
-  </div>
-  <div>Accusamus ad aliquam culpa cumque deserunt dolores error et ex expedita fugit, illum in, incidunt iste iure
-    libero magnam modi, molestias nisi officia optio perspiciatis quasi qui totam? Adipisci, iusto.
-  </div>
-  <div>Accusantium aliquid assumenda, atque beatae blanditiis, doloribus eos ex facere molestias mollitia neque
-    quibusdam sint sunt. Ad animi assumenda cupiditate dolore ea, facilis illo illum magnam, perspiciatis porro quae
-    quod!
-  </div>
+<div class="preloader">
+  <img ng-repeat="slide in slides" ng-src="{{ slide.image }}" width="1" height="1" />
+</div>
 
 
-    <!-- inject:vendor:js -->
-    <script src="/angular/angular.js"></script>
-    <script src="/angular-route/angular-route.js"></script>
-    <script src="/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="/angular-scroll/angular-scroll.js"></script>
-    <!-- endinject -->
-    <!-- inject:js -->
-    <script src="/aslan-templates.js"></script>
-    <script src="/app.js"></script>
-    <!-- endinject -->
-  </body>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi architecto aspernatur autem corporis deserunt
+incidunt ipsa minus nobis odio odit, possimus quas quia quis reprehenderit rerum sit ullam voluptatibus!
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi atque beatae consectetur culpa dolorem
+ducimus eligendi fugit impedit labore libero maxime nihil, obcaecati porro repellendus repudiandae velit veritatis vero.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id impedit maiores pariatur qui, ratione unde ut voluptas
+voluptate. Delectus dolores error ex illo officiis quaerat quis ratione tempora totam, voluptas!
+
+<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi aperiam beatae corporis dicta eaque earum
+  est eum, hic molestiae mollitia natus nemo, nostrum perferendis quam quisquam temporibus unde voluptates.
+</div>
+<div>A accusantium adipisci asperiores, assumenda autem dignissimos dolorem dolorum eaque earum eligendi eveniet
+  exercitationem fugit illo laboriosam nesciunt non numquam omnis placeat quam qui quibusdam reiciendis repellendus
+  suscipit tempora velit?
+</div>
+<div>A aliquid at commodi error, esse eveniet facilis fuga harum laudantium magni nam officiis perspiciatis, quo, sed
+  ullam vitae voluptate? Illo, natus, nobis? Amet eius est hic, in minus tenetur.
+</div>
+<div id="industrial">
+  INDUSTRIAL
+
+  Aliquid cupiditate inventore modi praesentium voluptates? Amet assumenda delectus labore nemo nihil quam quod!
+  Beatae distinctio laboriosam laudantium odio perspiciatis possimus, quos totam. Accusamus itaque iure mollitia quis.
+  Debitis, esse.
+</div>
+<div>Consequuntur cupiditate doloribus eum expedita ipsum libero minima nobis numquam odit, repellat rerum sapiente
+  similique, ullam vero voluptatem! Ab amet culpa debitis earum exercitationem iusto maiores molestias saepe sit
+  tenetur.
+</div>
+<div>Deleniti, magnam nulla. Laborum, modi, quos. Atque distinctio eius mollitia tempore vitae! Aut commodi,
+  distinctio doloribus facilis minus nemo nesciunt nostrum perspiciatis porro, possimus, praesentium quasi rerum saepe
+  temporibus unde?
+</div>
+<div id="commercial">
+  COMMERCIAL
+
+  Exercitationem iusto numquam perspiciatis? Alias, consequatur consequuntur deleniti dignissimos dolores inventore
+  modi? Accusamus aperiam at beatae consequatur cum doloribus inventore laudantium minus modi nobis odio possimus
+  reprehenderit sapiente, sed voluptatem.
+</div>
+<div>Asperiores eligendi ex quis. Ab assumenda doloribus, ea eaque eius et ex, expedita illum in ipsum magnam magni
+  nobis odit praesentium quasi reiciendis sunt tempora, ut velit veritatis. Et, quos!
+</div>
+<div id="about">
+  ABOUT
+
+  Autem earum eveniet ipsa labore nihil. Cum dolores exercitationem porro repudiandae rerum suscipit temporibus
+  tenetur totam ut voluptatum. Aperiam dolorem ea esse fugit itaque iusto odio perspiciatis quam tenetur velit.
+</div>
+<div>Amet cumque dicta dolor eaque neque sit voluptate? A accusamus aut deleniti dicta doloremque ducimus eligendi et
+  hic libero maxime nisi numquam porro quaerat reiciendis vel veritatis vitae, voluptatem voluptatibus.
+</div>
+<div>At est excepturi explicabo in numquam quibusdam voluptates! Aliquam amet architecto, at consectetur distinctio
+  dolore enim eum ex explicabo ipsam labore minima mollitia nobis optio porro quidem rem repudiandae vitae?
+</div>
+<div>Aperiam at corporis debitis exercitationem labore laborum quisquam rem tenetur vel veniam. Atque commodi dolores
+  eos excepturi, ipsa iusto laborum minima nesciunt non nostrum, perspiciatis placeat porro quia, recusandae vero.
+</div>
+<div>Ad architecto aspernatur beatae culpa debitis distinctio dolorem ducimus eaque hic iure labore magnam minus
+  molestias, natus nemo nobis non nulla perspiciatis possimus quasi quis quo quod reprehenderit saepe veniam?
+</div>
+<div>Assumenda at atque consequuntur culpa cupiditate deleniti dolore, eius error est explicabo illo impedit mollitia
+  nam nesciunt nihil nulla possimus provident quaerat quasi quia quis quo ratione repudiandae sequi voluptatibus!
+</div>
+<div>Delectus deleniti dignissimos ducimus eligendi et eveniet, labore magnam magni natus quos repellat reprehenderit
+  saepe totam. Amet commodi cumque dolore exercitationem expedita harum hic incidunt maxime reiciendis, similique
+  sint, soluta!
+</div>
+<div>Eum excepturi exercitationem iste pariatur ut! Asperiores consectetur hic nesciunt nostrum praesentium qui quod?
+  Aspernatur beatae commodi officia officiis qui quis sit voluptatem. Debitis, expedita maxime placeat quaerat
+  veritatis voluptates.
+</div>
+<div id="contact">
+  CONTACT
+
+  A ab, animi, architecto asperiores at blanditiis, consectetur culpa deserunt dicta distinctio ea et facere fugit
+  iusto modi nesciunt nobis obcaecati perspiciatis placeat porro quae quas repellendus sit tenetur ut!
+</div>
+<div>Ad amet consequuntur dolores excepturi impedit iusto, laudantium mollitia, odio optio totam, ullam vero! Aliquam
+  aperiam aut beatae culpa deserunt dolore eaque incidunt, nihil perferendis ratione repellat ullam voluptates
+  voluptatum.
+</div>
+<div>Accusamus ad aliquam culpa cumque deserunt dolores error et ex expedita fugit, illum in, incidunt iste iure
+  libero magnam modi, molestias nisi officia optio perspiciatis quasi qui totam? Adipisci, iusto.
+</div>
+<div>Accusantium aliquid assumenda, atque beatae blanditiis, doloribus eos ex facere molestias mollitia neque
+  quibusdam sint sunt. Ad animi assumenda cupiditate dolore ea, facilis illo illum magnam, perspiciatis porro quae
+  quod!
+</div>
+
+
+<!-- inject:vendor:js -->
+<script src="/angular/angular.js"></script>
+<script src="/angular-route/angular-route.js"></script>
+<script src="/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/angular-scroll/angular-scroll.js"></script>
+<script src="/angular-touch/angular-touch.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="/app.js"></script>
+<!-- endinject -->
+</body>
 </html>
