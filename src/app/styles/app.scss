@@ -1,12 +1,14 @@
-//@import url(http://fonts.googleapis.com/css?family=Raleway:400);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400);
 
 $nearWhite: #e2e2e2;
 $nearBlack: #141414;
+$textColor: $nearBlack;
 
 body {
   //  padding: 50px;
-  font: 20px/150% "Helvetica Neue", "Lucida Grande", Verdana, sans-serif;
-  color: #666;
+  font: 20px/150% "Raleway", Verdana, sans-serif;
+//  font: 20px/150% "Helvetica Neue", "Lucida Grande", Verdana, sans-serif;
+  color: $textColor;
   background: $nearWhite;
 }
 
