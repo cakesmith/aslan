@@ -9,8 +9,8 @@
   z-index: 99;
 
   .dropdown-menu {
-    &>li {
-      &>a {
+    & > li {
+      & > a {
         margin-top: 1rem;
         margin-bottom: 1rem;
       }
@@ -19,15 +19,13 @@
 
   .navbar-nav {
     li {
-
       a {
-
-            -webkit-transition: background .3s ease-in-out;
-            -moz-transition: background .3s ease-in-out;
-            transition: background .3s ease-in-out;
-            color: #fff;
-            font-size: 2rem;
-          }
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+        color: #fff;
+        font-size: 2rem;
+      }
     }
   }
 

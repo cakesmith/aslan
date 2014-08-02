@@ -51,6 +51,7 @@
     ];
 
     var base = 'http://gdriv.es/aslanelectric/img_';
+//    var base = 'http://gdriv.es/aslanelectric/_';
 
     angular.forEach(images, function(value) {
       slides.push({
@@ -86,9 +87,8 @@
   }]);
 
 
-
-
 }(angular.module('aslan', [
+  'aslan.loader',
   'ngRoute',
   'ui.bootstrap',
   'duScroll',

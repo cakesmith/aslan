@@ -33,5 +33,25 @@
       }
     }
 
-
 }
+
+  .loading {
+
+    p {
+      margin-top: 20rem;
+      vertical-align: middle;
+    }
+
+    left: 50%;
+    top: 50%;
+
+    width: 25rem;
+    margin-left: -12.5rem;  // 50% of width to center
+
+    height: 12rem;
+    margin-top: -6rem; // 50% of height to center
+
+    position: absolute;
+    z-index: -99;
+    background-color: transparent;
+  }
