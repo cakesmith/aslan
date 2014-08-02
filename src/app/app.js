@@ -1,15 +1,18 @@
 (function(aslan) {
+  'use strict';
+
+  aslan.value('duScrollOffset', 49);
 
   aslan.controller('Services', ['$scope', function($scope) {
 
     $scope.services = [
       {
-        text: "Industrial Controls",
-        href: "#industrial"
+        text: 'Industrial Controls',
+        href: '#industrial'
       },
       {
-        text: "Commercial Lighting",
-        href: "#commercial"
+        text: 'Commercial Lighting',
+        href: '#commercial'
       }
     ];
 
@@ -82,7 +85,7 @@
 
   }]);
 
-  aslan.value('duScrollOffset', 49);
+
 
 
 }(angular.module('aslan', [

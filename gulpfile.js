@@ -14,12 +14,41 @@ var gulp = require('gulp'),
     isWatching = false;
 
 var htmlminOpts = {
-  removeComments: true,
-  collapseWhitespace: true,
-  removeEmptyAttributes: false,
+  removeComments           : true,
+  collapseWhitespace       : true,
+  removeEmptyAttributes    : false,
   collapseBooleanAttributes: true,
   removeRedundantAttributes: true
 };
+
+
+/**
+ * Bump
+ */
+
+function bumpFiles() {
+  return gulp.src([
+    './*.json',
+    '!./divshot.json'
+  ]);
+}
+
+gulp.task('bump-major', function () {
+  bumpFiles()
+    .pipe(g.bump({type: 'major'}))
+    .pipe(gulp.dest('./'));
+});
+gulp.task('bump-minor', function () {
+  bumpFiles()
+    .pipe(g.bump({type: 'minor'}))
+    .pipe(gulp.dest('./'));
+});
+gulp.task('bump-patch', function () {
+  bumpFiles()
+    .pipe(g.bump({type: 'patch'}))
+    .pipe(gulp.dest('./'));
+});
+
 
 /**
  * JS Hint
@@ -82,15 +111,38 @@ gulp.task('templates-dist', function () {
 });
 
 /**
+ * Fonts
+ */
+
+gulp.task('fonts', function () {
+  return gulp.src(bowerFiles())
+    .pipe(g.filter(['*','!**/*.js', '!**/*.css']))
+    .pipe(gulp.dest('./dist/fonts'));
+});
+
+/**
  * Vendors
  */
-gulp.task('vendors', function () {
+
+gulp.task('vendors', ['fonts'], function () {
   var bowerStream = gulp.src(bowerFiles());
   return es.merge(
-    bowerStream.pipe(g.filter('**/*.css')).pipe(dist('css', 'vendors')),
+    bowerStream.pipe(g.filter('**/*.css'))
+      .pipe(g.replace('../fonts/', '/fonts/'))
+      .pipe(dist('css', 'vendors')),
     bowerStream.pipe(g.filter('**/*.js')).pipe(dist('js', 'vendors'))
   );
 });
+
+//gulp.task('vendors', ['fonts'], function () {
+//  var bowerStream = gulp.src(bowerFiles());
+//  return es.merge(
+//    bowerStream.pipe(g.filter('**/*.css')).pipe(dist('css', 'vendors')),
+//    bowerStream.pipe(g.filter('**/*.js')).pipe(dist('js', 'vendors'))
+//  );
+//});
+
+
 
 /**
  * Index
@@ -98,7 +150,7 @@ gulp.task('vendors', function () {
 gulp.task('index', index);
 gulp.task('build-all', ['styles', 'templates'], index);
 
-function index () {
+function index() {
   var opt = {read: false};
   return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src(bowerFiles(), opt), {ignorePath: 'bower_components', starttag: '<!-- inject:vendor:{{ext}} -->'}))
@@ -120,7 +172,17 @@ gulp.task('assets', function () {
 /**
  * Dist
  */
-gulp.task('dist', ['vendors', 'assets', 'styles-dist', 'scripts-dist'], function () {
+
+gulp.task('clean', function(done) {
+  rimraf('./.tmp', function() {
+    rimraf('./dist', done);
+  });
+});
+
+gulp.task('dist', ['clean', 'build-dist']);
+
+
+gulp.task('build-dist', ['vendors', 'assets', 'styles-dist', 'scripts-dist'], function () {
   return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src('./dist/vendors.min.{js,css}'), {ignorePath: 'dist', starttag: '<!-- inject:vendor:{{ext}} -->'}))
     .pipe(g.inject(gulp.src('./dist/' + bower.name + '.min.{js,css}'), {ignorePath: 'dist'}))
@@ -139,7 +201,11 @@ gulp.task('statics', g.serve({
 /**
  * Watch
  */
-gulp.task('serve', ['watch']);
+
+gulp.task('serve', ['clean'], function() {
+  gulp.start('watch');
+});
+
 gulp.task('watch', ['statics', 'default'], function () {
   isWatching = true;
   // Initiate livereload server:
@@ -175,8 +241,19 @@ gulp.task('test', ['templates'], function () {
   return testFiles()
     .pipe(g.karma({
       configFile: 'karma.conf.js',
-      action: 'run'
+      action    : 'run'
     }));
+});
+
+
+gulp.task('test-ci', ['test'], function () {
+  gulp.watch([
+    './src/app/**/*_test.js',
+    './.tmp/src/app/**/*_test.js',
+      './.tmp/' + bower.name + '-templates.js',
+    './.tmp/src/app/**/*.js',
+    './src/app/**/*.js'
+  ], ['test']);
 });
 
 /**
@@ -186,10 +263,10 @@ gulp.task('test', ['templates'], function () {
 gulp.task('karma-conf', ['templates'], function () {
   return gulp.src('./karma.conf.js')
     .pipe(g.inject(testFiles(), {
-      starttag: 'files: [',
-      endtag: ']',
+      starttag    : 'files: [',
+      endtag      : ']',
       addRootSlash: false,
-      transform: function (filepath, file, i, length) {
+      transform   : function (filepath, file, i, length) {
         return '  \'' + filepath + '\'' + (i + 1 < length ? ',' : '');
       }
     }))
@@ -211,16 +288,16 @@ function testFiles() {
 /**
  * All CSS files as a stream
  */
-function cssFiles (opt) {
+function cssFiles(opt) {
   return gulp.src('./.tmp/css/**/*.css', opt);
 }
 
 /**
  * All AngularJS application files as a stream
  */
-function appFiles () {
+function appFiles() {
   var files = [
-    './.tmp/' + bower.name + '-templates.js',
+      './.tmp/' + bower.name + '-templates.js',
     './.tmp/src/app/**/*.js',
     '!./.tmp/src/app/**/*_test.js',
     './src/app/**/*.js',
@@ -233,7 +310,7 @@ function appFiles () {
 /**
  * All AngularJS templates/partials as a stream
  */
-function templateFiles (opt) {
+function templateFiles(opt) {
   return gulp.src(['./src/app/**/*.html', '!./src/app/index.html'], opt)
     .pipe(opt && opt.min ? g.htmlmin(htmlminOpts) : noop());
 }
@@ -241,11 +318,11 @@ function templateFiles (opt) {
 /**
  * Build AngularJS templates/partials
  */
-function buildTemplates () {
+function buildTemplates() {
   return lazypipe()
     .pipe(g.ngHtml2js, {
-      moduleName: bower.name + '-templates',
-      prefix: '/' + bower.name + '/',
+      moduleName : bower.name + '-templates',
+      prefix     : '/' + bower.name + '/',
       stripPrefix: '/src/app'
     })
     .pipe(g.concat, bower.name + '-templates.js')
@@ -260,7 +337,7 @@ function buildTemplates () {
  * @param {String} name
  * @param {Object} opt
  */
-function dist (ext, name, opt) {
+function dist(ext, name, opt) {
   opt = opt || {};
   return lazypipe()
     .pipe(g.concat, name + '.' + ext)
@@ -276,7 +353,7 @@ function dist (ext, name, opt) {
 /**
  * Livereload (or noop if not run by watch)
  */
-function livereload () {
+function livereload() {
   return lazypipe()
     .pipe(isWatching ? g.livereload : noop)();
 }
@@ -284,7 +361,7 @@ function livereload () {
 /**
  * Jshint with stylish reporter
  */
-function jshint (jshintfile) {
+function jshint(jshintfile) {
   return lazypipe()
     .pipe(g.jshint, jshintfile)
     .pipe(g.jshint.reporter, stylish)();
