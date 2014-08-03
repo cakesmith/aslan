@@ -47,16 +47,16 @@
   & .rect2 {
     margin-left: $margin;
     -webkit-animation-delay: -1.1s;
-    -moz-animation-delay:-1.1s;
-    -o-animation-delay:-1.1s;
+    -moz-animation-delay: -1.1s;
+    -o-animation-delay: -1.1s;
     animation-delay: -1.1s;
   }
 
   & .rect3 {
     margin-left: $margin;
     -webkit-animation-delay: -1.0s;
-    -moz-animation-delay:-1.0s;
-    -o-animation-delay:-1.0s;
+    -moz-animation-delay: -1.0s;
+    -o-animation-delay: -1.0s;
     animation-delay: -1.0s;
   }
 
@@ -93,13 +93,14 @@
 }
 
 
-.repeat-animation {
 
-@include spinner(fadeOut);
-
-}
 
 .spinner {
+  .repeat-animation {
+
+    @include spinner(fadeOut);
+
+  }
   @include spinner-inner(1.5rem);
 }
 

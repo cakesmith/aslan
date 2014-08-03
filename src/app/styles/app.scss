@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,600);
-
 $nearWhite: #e2e2e2;
 $nearBlack: #141414;
 $textColor: $nearBlack;
@@ -36,3 +34,4 @@ button {
 @import "navbar";
 @import "carousel";
 @import "loader";
+@import "animations";
