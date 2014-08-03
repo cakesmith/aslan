@@ -6,7 +6,7 @@
     $scope.numRects = 5;
     $scope.rects = [];
 
-    for(var i=1; i <=$scope.numRects; i++) {
+    for (var i = 1; i <= $scope.numRects; i++) {
       $scope.rects.push(i);
     }
 

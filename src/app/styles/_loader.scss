@@ -14,7 +14,6 @@
 
 }
 
-
 .loading {
 
   left: 50%;
@@ -30,8 +29,6 @@
   z-index: -99;
   background-color: transparent;
 }
-
-
 
 @mixin spinner($type) {
   -webkit-transform: translateZ(0);
@@ -63,20 +60,19 @@
   & .rect4 {
     margin-left: $margin;
     -webkit-animation-delay: -0.9s;
-    -moz-animation-delay:-0.9s;
-    -o-animation-delay:-0.9s;
+    -moz-animation-delay: -0.9s;
+    -o-animation-delay: -0.9s;
     animation-delay: -0.9s;
   }
 
   & .rect5 {
     margin-left: $margin;
     -webkit-animation-delay: -0.8s;
-    -moz-animation-delay:-0.8s;
-    -o-animation-delay:-0.8s;
+    -moz-animation-delay: -0.8s;
+    -o-animation-delay: -0.8s;
     animation-delay: -0.8s;
   }
 }
-
 
 .spinner {
   width: 100%;
@@ -92,9 +88,6 @@
   display: inline-block;
 }
 
-
-
-
 .spinner {
   .repeat-animation {
 
@@ -103,10 +96,6 @@
   }
   @include spinner-inner(1.5rem);
 }
-
-
-
-
 
 @-webkit-keyframes stretchdelay {
   0%, 40%, 100% {

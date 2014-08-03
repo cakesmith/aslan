@@ -4,7 +4,7 @@
 
     var service = {
 
-      base: 'http://gdriv.es/aslanelectric/',
+      base  : 'http://gdriv.es/aslanelectric/',
       prefix: 'img_',
       suffix: '.jpg',
       slides: [],
@@ -50,7 +50,6 @@
       }
 
     });
-
 
 
     return service;

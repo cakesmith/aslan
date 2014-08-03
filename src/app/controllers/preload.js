@@ -1,6 +1,6 @@
-(function(preload) {
+(function (preload) {
 
-  preload.controller('preloadCtrl', function($scope, imageService) {
+  preload.controller('preloadCtrl', function ($scope, imageService) {
 
     $scope.images = imageService.images;
 
