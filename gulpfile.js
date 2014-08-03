@@ -116,7 +116,7 @@ gulp.task('templates-dist', function () {
 
 gulp.task('fonts', function () {
   return gulp.src(bowerFiles())
-    .pipe(g.filter(['*','!**/*.js', '!**/*.css']))
+    .pipe(g.filter(['*', '!**/*.js', '!**/*.css']))
     .pipe(gulp.dest('./dist/fonts'));
 });
 
@@ -141,7 +141,6 @@ gulp.task('vendors', ['fonts'], function () {
 //    bowerStream.pipe(g.filter('**/*.js')).pipe(dist('js', 'vendors'))
 //  );
 //});
-
 
 
 /**
@@ -173,8 +172,8 @@ gulp.task('assets', function () {
  * Dist
  */
 
-gulp.task('clean', function(done) {
-  rimraf('./.tmp', function() {
+gulp.task('clean', function (done) {
+  rimraf('./.tmp', function () {
     rimraf('./dist', done);
   });
 });
@@ -202,7 +201,7 @@ gulp.task('statics', g.serve({
  * Watch
  */
 
-gulp.task('serve', ['clean'], function() {
+gulp.task('serve', ['clean'], function () {
   gulp.start('watch');
 });
 
@@ -278,7 +277,8 @@ gulp.task('karma-conf', ['templates'], function () {
  */
 function testFiles() {
   return new queue({objectMode: true})
-    .queue(gulp.src(bowerFiles()).pipe(g.filter('**/*.js')))
+    .queue(gulp.src(bowerFiles())
+      .pipe(g.filter('**/*.js')))
     .queue(gulp.src('./bower_components/angular-mocks/angular-mocks.js'))
     .queue(appFiles())
     .queue(gulp.src(['./src/app/**/*_test.js', './.tmp/src/app/**/*_test.js']))

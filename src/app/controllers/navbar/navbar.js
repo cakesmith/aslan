@@ -2,7 +2,7 @@
   'use strict';
 
 
-  navbar.controller('NavCtrl', function ($scope, $window, $timeout) {
+  navbar.controller('NavCtrl', function ($scope) {
     var nav, dropDown;
 
     nav = dropDown = $scope.nav = $scope.dropDown = {};
@@ -11,9 +11,8 @@
     nav.darken = false;
     dropDown.isOpen = false;
 
-    angular.element($window).bind('scroll', function () {
-      nav.darken = this.pageYOffset > 50;
-      $scope.$apply();
+    $scope.$on('scroll', function(event, offset) {
+      nav.darken = offset > 50;
     });
 
     $scope.navClick = function ($event) {
