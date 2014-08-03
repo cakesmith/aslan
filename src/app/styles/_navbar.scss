@@ -6,7 +6,7 @@
   font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
   background-color: $nearBlack;
-  z-index: 99;
+  z-index: auto;
 
   .dropdown-menu {
     & > li {

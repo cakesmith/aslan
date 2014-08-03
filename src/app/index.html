@@ -11,7 +11,8 @@
 
   <meta name="author" content="Nick LaRosa"/>
 
-  <meta name="description" content="Aslan is a local electrical contractor in Franklin, Massachusetts. A family business for over 20 years, Aslan is your choice for everything from large commercial lighting retrofits to complex home automation systems.">
+  <meta name="description"
+        content="Aslan is a local electrical contractor in Franklin, Massachusetts. A family business for over 20 years, Aslan is your choice for everything from large commercial lighting retrofits to complex home automation systems.">
 
 
   <title>Aslan Electric, Inc.</title>
@@ -22,13 +23,15 @@
   <!-- inject:vendor:css -->
   <!-- endinject -->
   <!-- inject:css -->
+  <link rel="stylesheet" href="/css/styles/animate.css">
   <link rel="stylesheet" href="/css/styles/app.css">
   <!-- endinject -->
 </head>
 
 <body ng-controller="AppCtrl">
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-class="{darken: nav.darken}">
+<nav ng-controller="NavCtrl" class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+     ng-class="{darken: nav.darken}">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -47,7 +50,7 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <li dropdown is-open="dropDown.isOpen" ng-controller="Services">
+        <li dropdown is-open="dropDown.isOpen">
 
           <a class="dropdown-toggle" href="">Services <span class="glyphicon glyphicon-chevron-down"></span></a>
           <ul class="dropdown-menu" ng-class="{darken: nav.darken}" role="menu">
@@ -71,25 +74,29 @@
   <!-- /.container-fluid -->
 </nav>
 
+<div ng-controller="CarouselCtrl">
+  
+  <carousel interval="myInterval">
 
-<carousel interval="myInterval">
+    <load-spinner class="loading" color="#000" ng-cloak>
+    </load-spinner>
 
-  <div class="loading" load-spinner>
-  </div>
+    <slide ng-repeat="slide in slides" active="slide.active">
 
-  <slide ng-repeat="slide in slides" active="slide.active">
+      <div class="bg" ng-style="{'background-image':'url(' + slide.url + ')'}">
+        <div class="tint"></div>
+      </div>
 
-     <div class="bg" style="background-image:url({{slide.image}});">
+      <div class="carousel-caption" ng-cloak>
+        <div class="shadow">
+          <a>{{slide.text}}</a>
+        </div>
+      </div>
 
-      <div class="tint"></div>
+    </slide>
+  </carousel>
+</div>
 
-    </div>
-    <div class="carousel-caption" ng-cloak>
-      <p>{{slide.text}}</p>
-
-    </div>
-  </slide>
-</carousel>
 
 <div class="content">
   <h1>CONTENT</h1>
@@ -184,8 +191,8 @@
   </div>
 </div>
 
-<div class="preloader">
-  <img ng-repeat="slide in slides" ng-src="{{ slide.image }}" width="1" height="1"/>
+<div class="preloader" ng-controller="preloadCtrl">
+  <img ng-repeat="image in images" ng-src="{{ image.url }}" width="1" height="1"/>
 </div>
 
 <!-- inject:vendor:js -->
@@ -197,8 +204,13 @@
 <!-- endinject -->
 <!-- inject:js -->
 <script src="/aslan-templates.js"></script>
+<script src="/controllers/navbar.js"></script>
 <script src="/services/image/image.js"></script>
 <script src="/services/loader/loader.js"></script>
+<script src="/controllers/carousel.js"></script>
+<script src="/controllers/preload.js"></script>
+<script src="/services/services.js"></script>
+<script src="/controllers/controllers.js"></script>
 <script src="/app.js"></script>
 <!-- endinject -->
 </body>

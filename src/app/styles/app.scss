@@ -1,13 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway:400);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,600);
 
 $nearWhite: #e2e2e2;
 $nearBlack: #141414;
 $textColor: $nearBlack;
 
 body {
-  //  padding: 50px;
   font: 20px/150% "Raleway", Verdana, sans-serif;
-//  font: 20px/150% "Helvetica Neue", "Lucida Grande", Verdana, sans-serif;
   color: $textColor;
   background: $nearWhite;
 }
@@ -16,6 +14,12 @@ input,
 textarea,
 button {
   font: inherit;
+}
+
+.content {
+  background-color: $nearWhite;
+  margin-top: 40rem;
+  z-index: -1;
 }
 
 
@@ -31,3 +35,4 @@ button {
 
 @import "navbar";
 @import "carousel";
+@import "loader";

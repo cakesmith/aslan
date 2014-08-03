@@ -1,0 +1,130 @@
+.preloader {
+  @media screen {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+  }
+  img {
+    display: block;
+    @media print {
+      visibility: hidden;
+      display: none;
+    }
+  }
+
+}
+
+
+.loading {
+
+  left: 50%;
+  top: 50%;
+
+  width: 30rem;
+  margin-left: -15rem; // 50% of width to center
+
+  height: 10rem;
+  margin-top: -5rem; // 50% of height to center
+
+  position: absolute;
+  z-index: -99;
+  background-color: transparent;
+}
+
+
+
+@mixin spinner($type) {
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+
+  -webkit-animation: $type 1.2s infinite;
+  -moz-animation-delay: $type 1.2s infinite;
+  -o-animation-delay: $type 1.2s infinite;
+  animation: $type 1.2s infinite;
+}
+
+@mixin spinner-inner($margin) {
+  & .rect2 {
+    margin-left: $margin;
+    -webkit-animation-delay: -1.1s;
+    -moz-animation-delay:-1.1s;
+    -o-animation-delay:-1.1s;
+    animation-delay: -1.1s;
+  }
+
+  & .rect3 {
+    margin-left: $margin;
+    -webkit-animation-delay: -1.0s;
+    -moz-animation-delay:-1.0s;
+    -o-animation-delay:-1.0s;
+    animation-delay: -1.0s;
+  }
+
+  & .rect4 {
+    margin-left: $margin;
+    -webkit-animation-delay: -0.9s;
+    -moz-animation-delay:-0.9s;
+    -o-animation-delay:-0.9s;
+    animation-delay: -0.9s;
+  }
+
+  & .rect5 {
+    margin-left: $margin;
+    -webkit-animation-delay: -0.8s;
+    -moz-animation-delay:-0.8s;
+    -o-animation-delay:-0.8s;
+    animation-delay: -0.8s;
+  }
+}
+
+
+.spinner {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.spinner > div {
+  background-color: $nearWhite;
+  height: 100%;
+  width: 8%;
+  border-radius: 2rem;
+  display: inline-block;
+}
+
+
+.repeat-animation {
+
+@include spinner(fadeOut);
+
+}
+
+.spinner {
+  @include spinner-inner(1.5rem);
+}
+
+
+
+
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2)
+  }
+  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0)
+  }
+}
+
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+  }
+  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}

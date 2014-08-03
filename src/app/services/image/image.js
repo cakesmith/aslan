@@ -43,9 +43,8 @@
 
     };
 
-
     angular.forEach(service.images, function (value) {
-      value.image = service.base + service.prefix + value.id + service.suffix;
+      value.url = service.base + service.prefix + value.id + service.suffix;
       if (value.type === 'slide') {
         service.slides.push(value);
       }
