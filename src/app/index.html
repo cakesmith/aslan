@@ -48,15 +48,14 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" collapse="nav.isCollapsed" ng-cloak>
-
       <ul class="nav navbar-nav navbar-right">
-
         <li dropdown is-open="dropDown.isOpen">
-
           <a class="dropdown-toggle" href="">Services <span class="glyphicon glyphicon-chevron-down"></span></a>
           <ul class="dropdown-menu" ng-class="{darken: nav.darken}" role="menu">
+
             <li ng-repeat="service in services">
               <a ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll>{{ service.text }}</a>
+
             </li>
           </ul>
         </li>

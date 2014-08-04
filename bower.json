@@ -1,15 +1,15 @@
 {
-  "name": "aslan",
-  "main": [
+  "name"           : "aslan",
+  "main"           : [
     "/dist/aslan.min.js",
     "/dist/aslan.min.css"
   ],
-  "version": "0.4.3",
-  "description": "TODO",
-  "authors": [
+  "version"        : "0.5.0",
+  "description"    : "TODO",
+  "authors"        : [
     "TODO"
   ],
-  "ignore": [
+  "ignore"         : [
     "**/.*",
     "package.json",
     "klei.json",
@@ -18,17 +18,17 @@
     "bower_components",
     "src"
   ],
-  "dependencies": {
-    "angular": "~1.2.14",
-    "angular-route": "~1.2.14",
+  "dependencies"   : {
+    "angular"          : "~1.2.14",
+    "angular-route"    : "~1.2.14",
     "angular-bootstrap": "~0.11.0",
-    "angular-scroll": "~0.6.1",
-    "angular-touch": "~1.2.21"
+    "angular-scroll"   : "~0.6.1",
+    "angular-touch"    : "~1.2.21"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.14"
   },
-  "overrides": {
+  "overrides"      : {
     "angular-scroll": {
       "main": [
         "angular-scroll.js"
