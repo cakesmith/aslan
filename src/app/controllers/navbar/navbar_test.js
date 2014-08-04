@@ -7,7 +7,7 @@ describe('navbar test', function () {
 
   beforeEach(module('aslan.navbar'));
 
-  beforeEach(inject(function($rootScope, $controller) {
+  beforeEach(inject(function ($rootScope, $controller) {
 
     rootScope = $rootScope;
     scope = $rootScope.$new();
@@ -17,8 +17,7 @@ describe('navbar test', function () {
   }));
 
 
-
-  it('should set the starting values', inject(function() {
+  it('should set the starting values', inject(function () {
 
 
     expect(scope.nav.isCollapsed).toBe(true);
@@ -27,7 +26,7 @@ describe('navbar test', function () {
 
   }));
 
-  it('should not darken before scrolling past breakpoint', inject(function() {
+  it('should not darken before scrolling past breakpoint', inject(function () {
 
     rootScope.$broadcast('scroll', breakpoint);
     rootScope.$apply();
@@ -36,16 +35,16 @@ describe('navbar test', function () {
 
   }));
 
-  it('should darken when scrolled past breakpoint', inject(function() {
+  it('should darken when scrolled past breakpoint', inject(function () {
 
-    rootScope.$broadcast('scroll', breakpoint+1);
+    rootScope.$broadcast('scroll', breakpoint + 1);
     rootScope.$apply();
 
     expect(scope.nav.darken).toBe(true);
 
   }));
 
-  it('should collapse nav bar', inject(function() {
+  it('should collapse nav bar', inject(function () {
 
     expect(scope.nav.isCollapsed).toBe(true);
     scope.navToggle();
@@ -56,7 +55,7 @@ describe('navbar test', function () {
 
   }));
 
-  it('should re-collapse navbar and close dropdown on click', inject(function() {
+  it('should re-collapse navbar and close dropdown on click', inject(function () {
 
     var event = jasmine.createSpyObj('event', [
       'preventDefault',
@@ -75,8 +74,6 @@ describe('navbar test', function () {
     expect(scope.dropDown.isOpen).toBe(false);
 
   }));
-
-
 
 
 });

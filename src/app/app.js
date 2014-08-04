@@ -3,8 +3,8 @@
 
   aslan.value('duScrollOffset', 49);
 
-  aslan.run(function($window, $rootScope) {
-    angular.element($window).bind('scroll', function() {
+  aslan.run(function ($window, $rootScope) {
+    angular.element($window).bind('scroll', function () {
       $rootScope.$broadcast('scroll', this.pageYOffset);
       $rootScope.$apply();
     });

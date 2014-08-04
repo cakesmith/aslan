@@ -11,7 +11,7 @@
     nav.darken = false;
     dropDown.isOpen = false;
 
-    $scope.$on('scroll', function(event, offset) {
+    $scope.$on('scroll', function (event, offset) {
       nav.darken = offset > 50;
     });
 

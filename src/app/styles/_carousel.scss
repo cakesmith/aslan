@@ -25,6 +25,10 @@
   .carousel-caption {
     letter-spacing: .3rem;
     font-size: 2.5rem;
+    position: absolute;
+    width: 50rem;
+    left: 50%;
+    margin-left: -25rem;
 
     .shadow {
       position: relative;
