@@ -1,4 +1,5 @@
 (function (image) {
+  'use strict';
 
   image.factory('imageService', function () {
 
@@ -8,50 +9,72 @@
       prefix: 'img_',
       suffix: '.jpg',
       slides: [],
+
       images: [
         {
           text: 'Commercial Lighting',
-          id  : '6571',
+          href: '#commercial',
+          ids : ['6571'],
           type: 'slide'
         },
         {
           text: 'Home Automation',
-          id  : '6682',
+          href: '#automation',
+          ids : ['6682'],
           type: 'slide'
         },
         {
           text: 'Design Engineering',
-          id  : '6683',
+          href: '#engineering',
+          ids : ['6683'],
           type: 'slide'
         },
         {
           text: 'Network Design',
-          id  : '6695',
+          href: '#network',
+          ids : ['6695'],
           type: 'slide'
         },
         {
           text: 'Municipal Services',
-          id  : '7152',
+          href: '#municipal',
+          ids : ['7152'],
           type: 'slide'
         },
         {
           text: 'Retrofit Upgrades',
-          id  : '7211',
+          href: '#retrofit',
+          ids : ['7211'],
           type: 'slide'
         }
       ]
 
     };
 
-    angular.forEach(service.images, function (value) {
-      value.url = service.base + service.prefix + value.id + service.suffix;
-      if (value.type === 'slide') {
-        service.slides.push(value);
+    function randomUpTo(num) {
+      if (num === 0) {
+        return 0;
+      } else {
+        return Math.floor(Math.random() * 10) % num;
       }
+    }
 
-    });
+    function createUrl(value) {
+      return service.base + service.prefix + value.ids[randomUpTo(value.ids.length - 1)] + service.suffix;
+    }
 
+    function init() {
+      service.slides = [];
+      angular.forEach(service.images, function (value) {
+        value.url = createUrl(value);
+        if (value.type === 'slide') {
+          service.slides.push(value);
+        }
+      });
+    }
 
+    service.init = init;
+    init();
     return service;
 
   });

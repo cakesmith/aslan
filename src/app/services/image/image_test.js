@@ -1,6 +1,5 @@
-'use strict';
-
 beforeEach(module('aslan.image'));
+'use strict';
 
 describe('image Service', function () {
 
@@ -16,7 +15,6 @@ describe('image Service', function () {
 
     expect(imageService.images).not.toBeUndefined();
     expect(imageService.slides).not.toBeUndefined();
-
 
   }));
 

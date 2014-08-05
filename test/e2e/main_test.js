@@ -19,6 +19,22 @@ describe('E2E: main page', function () {
     expect(browser.getTitle()).toEqual('Aslan Electric, Inc.');
   });
 
+  it('should have a navbar section', function () {
+
+
+  });
+
+  it('should have a carousel section', function () {
+
+
+  });
+
+  it('should have a content section', function () {
+
+
+  });
+
+
   it('should darken the navbar when scrolled', function () {
 
     var navbar = element(by.css('.navbar'));

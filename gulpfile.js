@@ -111,6 +111,29 @@ gulp.task('templates-dist', function () {
 });
 
 /**
+ * All AngularJS templates/partials as a stream
+ */
+function templateFiles(opt) {
+  return gulp.src(['./src/app/**/*.html', '!./src/app/index.html'], opt)
+    .pipe(opt && opt.min ? g.htmlmin(htmlminOpts) : noop());
+}
+
+/**
+ * Build AngularJS templates/partials
+ */
+function buildTemplates() {
+  return lazypipe()
+    .pipe(g.ngHtml2js, {
+      moduleName : bower.name + '-templates',
+      prefix     : '/' + bower.name + '/',
+      stripPrefix: '/src/app'
+    })
+    .pipe(g.concat, bower.name + '-templates.js')
+    .pipe(gulp.dest, './.tmp')
+    .pipe(livereload)();
+}
+
+/**
  * Fonts
  */
 
@@ -154,10 +177,22 @@ function index() {
   return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src(bowerFiles(), opt), {ignorePath: 'bower_components', starttag: '<!-- inject:vendor:{{ext}} -->'}))
     .pipe(g.inject(es.merge(appFiles(), cssFiles(opt)), {ignorePath: ['.tmp', 'src/app']}))
+    .pipe(g.inject(contentFiles(), {starttag: '<!-- inject:content -->', transform: extractContent}))
     .pipe(gulp.dest('./src/app/'))
     .pipe(g.embedlr())
     .pipe(gulp.dest('./.tmp/'))
     .pipe(livereload());
+}
+
+function contentFiles() {
+  return es.merge(gulp.src(['./src/app/content/**/*.md'])
+      .pipe(g.markdown()),
+    gulp.src(['./src/app/content/**/*.html']))
+}
+
+function extractContent(filePath, file) {
+  // return file contents as string
+  return file.contents.toString('utf8');
 }
 
 /**
@@ -214,6 +249,7 @@ gulp.task('watch', ['statics', 'default'], function () {
       gulp.start('index');
     }
   });
+  gulp.watch('./src/app/content/**/*', ['index']);
   gulp.watch('./src/app/index.html', ['index']);
   gulp.watch(['./src/app/**/*.html', '!./src/app/index.html'], ['templates']);
   gulp.watch(['./src/app/**/*.scss'], ['csslint']).on('change', function (evt) {
@@ -307,28 +343,7 @@ function appFiles() {
     .pipe(g.angularFilesort());
 }
 
-/**
- * All AngularJS templates/partials as a stream
- */
-function templateFiles(opt) {
-  return gulp.src(['./src/app/**/*.html', '!./src/app/index.html'], opt)
-    .pipe(opt && opt.min ? g.htmlmin(htmlminOpts) : noop());
-}
 
-/**
- * Build AngularJS templates/partials
- */
-function buildTemplates() {
-  return lazypipe()
-    .pipe(g.ngHtml2js, {
-      moduleName : bower.name + '-templates',
-      prefix     : '/' + bower.name + '/',
-      stripPrefix: '/src/app'
-    })
-    .pipe(g.concat, bower.name + '-templates.js')
-    .pipe(gulp.dest, './.tmp')
-    .pipe(livereload)();
-}
 
 /**
  * Concat, rename, minify

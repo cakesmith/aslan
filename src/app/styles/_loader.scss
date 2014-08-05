@@ -32,11 +32,13 @@
 
 @mixin spinner($type) {
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+
   -webkit-backface-visibility: hidden;
 
   -webkit-animation: $type 1.2s infinite;
-  -moz-animation-delay: $type 1.2s infinite;
-  -o-animation-delay: $type 1.2s infinite;
+  -moz-animation: $type 1.2s infinite;
+  -o-animation: $type 1.2s infinite;
   animation: $type 1.2s infinite;
 }
 
@@ -99,22 +101,22 @@
 
 @-webkit-keyframes stretchdelay {
   0%, 40%, 100% {
+    -webkit-transform: scaleY(0.2);
     transform: scaleY(0.2);
-    -webkit-transform: scaleY(0.2)
   }
   20% {
+    -webkit-transform: scaleY(1.0);
     transform: scaleY(1.0);
-    -webkit-transform: scaleY(1.0)
   }
 }
 
 @keyframes stretchdelay {
   0%, 40%, 100% {
-    transform: scaleY(0.2);
     -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
   }
   20% {
-    transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
+    transform: scaleY(1.0);
   }
 }

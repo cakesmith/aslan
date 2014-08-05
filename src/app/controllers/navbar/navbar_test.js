@@ -1,4 +1,5 @@
 describe('navbar test', function () {
+  'use strict';
 
   var rootScope, scope;
 
