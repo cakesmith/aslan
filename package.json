@@ -1,6 +1,6 @@
 {
   "name"           : "aslan",
-  "version"        : "0.6.0",
+  "version"        : "0.0.30",
   "private"        : true,
   "scripts"        : {
     "install": "node node_modules/protractor/bin/webdriver-manager update"

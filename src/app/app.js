@@ -38,7 +38,7 @@
       var compile = directive.compile;
 
       directive.compile = function (element, attrs) {
-        if (attrs.href && attrs.href.indexOf('#') > -1 && attrs.duSmoothScroll === undefined) {
+        if (attrs.duSmoothScroll === undefined) {
           compile(element, attrs);
           return function (scope, element, attrs) {
             duSmoothScroll.link(scope, element, attrs);

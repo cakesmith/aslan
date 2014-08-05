@@ -1,12 +1,12 @@
 (function (preload) {
   'use strict';
 
-  preload.controller('preloadCtrl', function ($scope, imageService) {
+  preload.controller('preloadCtrl', function ($scope, slideService) {
 
-    $scope.images = imageService.images;
+    $scope.slides = slideService.slides;
 
   });
 
 }(angular.module('aslan.preload', [
-  'aslan.image'
+  'aslan.slides'
 ])));

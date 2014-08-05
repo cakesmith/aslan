@@ -21,6 +21,29 @@ var htmlminOpts = {
   removeRedundantAttributes: true
 };
 
+/**
+ * Divshot
+ */
+
+gulp.task('divshot', ['dist', 'bump-patch'], function () {
+
+  var spawn = require('child_process').spawn;
+
+  function log(data) {
+    return console.log('[Divshot] ' + data.toString().trim());
+  }
+
+  var push = spawn('divshot', ['push']);
+
+  push.on('error', function (error) {
+    console.log(error.stack);
+  });
+
+  push.stdout.on('data', log);
+  push.stderr.on('data', log);
+
+});
+
 
 /**
  * Bump
