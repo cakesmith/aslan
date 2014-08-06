@@ -3,3 +3,4 @@ bower_components/
 .tmp/
 .divshot-cache/
 .idea/
+src/app/assets/

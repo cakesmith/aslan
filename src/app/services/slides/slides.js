@@ -5,9 +5,9 @@
 
     var service = {
 
-      base  : 'http://gdriv.es/aslanelectric/slides/',
-      prefix: 'img_',
-      suffix: '.jpg',
+      base  : '/assets/images/',
+      prefix: 'IMG_',
+      suffix: '.JPG',
 
       slides: [
         {
@@ -55,7 +55,7 @@
       var url = slide.url;
 
       slide.url = url ? function () {
-        return url
+        return url;
       } : function (id) {
         var which = id ? this.ids[id] : this.ids[this.selected];
         return service.base + service.prefix + which + service.suffix;

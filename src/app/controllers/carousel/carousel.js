@@ -6,7 +6,7 @@
 
       var directive = $delegate[0];
 
-      directive.scope.fn = "&";
+      directive.scope.fn = '&';
 
       var link = directive.link;
 

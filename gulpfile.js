@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     lazypipe = require('lazypipe'),
     stylish = require('jshint-stylish'),
     bower = require('./bower'),
+    spawn = require('child_process').spawn,
     isWatching = false;
 
 var htmlminOpts = {
@@ -21,13 +22,49 @@ var htmlminOpts = {
   removeRedundantAttributes: true
 };
 
+
+/**
+ * Image compression
+ */
+
+gulp.task('imagemin', function () {
+
+  var imgblob = './src/app/assets/**/*.{JPG,GIF,PNG}';
+  var ignoreblob = './src/app/assets/**/~*.{JPG,GIF,PNG}';
+
+  return es.merge(gulp.src([imgblob, '!'.concat(ignoreblob)], {buffer: false})
+
+      .pipe(g.spawn({
+        cmd : 'convert',
+        args: [
+          '-',
+          '-strip',
+          '-interlace',
+          'Plane',
+          '-gaussian-blur',
+          '0.05',
+          '-quality',
+          '85%',
+          '-'
+        ]})),
+
+    gulp.src(ignoreblob)
+
+      .pipe(g.rename(function (path) {
+        path.basename = path.basename.slice(1);
+      })))
+
+    .pipe(gulp.dest('./.tmp/assets/'))
+    .pipe(gulp.dest('./dist/assets/'));
+
+});
+
+
 /**
  * Divshot
  */
 
-gulp.task('divshot', ['dist', 'bump-patch'], function () {
-
-  var spawn = require('child_process').spawn;
+gulp.task('divshot', ['build-dist'], function () {
 
   function log(data) {
     return console.log('[Divshot] ' + data.toString().trim());
@@ -37,10 +74,13 @@ gulp.task('divshot', ['dist', 'bump-patch'], function () {
 
   push.on('error', function (error) {
     console.log(error.stack);
+    return;
   });
 
   push.stdout.on('data', log);
   push.stderr.on('data', log);
+
+  gulp.start('bump-patch');
 
 });
 
@@ -223,23 +263,32 @@ function extractContent(filePath, file) {
  */
 gulp.task('assets', function () {
   return gulp.src('./src/app/assets/**')
-    .pipe(gulp.dest('./dist/assets'));
+    .pipe(g.rename(function (path) {
+      if (path.basename.indexOf('~') === 0) {
+        path.basename = path.basename.slice(1);
+      }
+    }))
+    .pipe(gulp.dest('./dist/assets/'));
 });
 
 /**
  * Dist
  */
 
-gulp.task('clean', function (done) {
-  rimraf('./.tmp', function () {
-    rimraf('./dist', done);
-  });
+gulp.task('clean', ['clean-dist'], function (done) {
+  rimraf('./.tmp', done);
 });
 
-gulp.task('dist', ['clean', 'build-dist']);
+gulp.task('clean-dist', function (done) {
+  rimraf('./dist', done);
+});
+
+gulp.task('dist', ['clean-dist'], function () {
+  gulp.start('build-dist');
+});
 
 
-gulp.task('build-dist', ['vendors', 'assets', 'styles-dist', 'scripts-dist'], function () {
+gulp.task('build-dist', ['vendors', 'styles-dist', 'scripts-dist'], function () {
   return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src('./dist/vendors.min.{js,css}'), {ignorePath: 'dist', starttag: '<!-- inject:vendor:{{ext}} -->'}))
     .pipe(g.inject(gulp.src('./dist/' + bower.name + '.min.{js,css}'), {ignorePath: 'dist'}))
@@ -264,6 +313,7 @@ gulp.task('serve', ['clean'], function () {
 });
 
 gulp.task('watch', ['statics', 'default'], function () {
+//  gulp.src('./src/app/assets/**/*.*').pipe(gulp.dest('.tmp/assets/'));
   isWatching = true;
   // Initiate livereload server:
   g.livereload.listen();
@@ -365,7 +415,6 @@ function appFiles() {
   return gulp.src(files)
     .pipe(g.angularFilesort());
 }
-
 
 
 /**

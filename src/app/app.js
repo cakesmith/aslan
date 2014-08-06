@@ -42,7 +42,7 @@
           compile(element, attrs);
           return function (scope, element, attrs) {
             duSmoothScroll.link(scope, element, attrs);
-          }
+          };
         } else {
           return compile(element, attrs);
         }
