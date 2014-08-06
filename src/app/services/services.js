@@ -1,4 +1,4 @@
 angular.module('aslan.services', [
-  'aslan.loader',
+  'aslan.loadspinner',
   'aslan.slides'
 ]);

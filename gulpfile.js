@@ -248,9 +248,9 @@ function index() {
 }
 
 function contentFiles() {
-  return es.merge(gulp.src(['./src/app/content/**/*.md'])
+  return es.merge(gulp.src(['./src/app/templates/**/*.md'])
       .pipe(g.markdown()),
-    gulp.src(['./src/app/content/**/*.html']))
+    gulp.src(['./src/app/templates/**/*.html']))
 }
 
 function extractContent(filePath, file) {
@@ -288,7 +288,7 @@ gulp.task('dist', ['clean-dist'], function () {
 });
 
 
-gulp.task('build-dist', ['vendors', 'styles-dist', 'scripts-dist'], function () {
+gulp.task('build-dist', ['vendors', 'styles-dist', 'scripts-dist', 'imagemin'], function () {
   return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src('./dist/vendors.min.{js,css}'), {ignorePath: 'dist', starttag: '<!-- inject:vendor:{{ext}} -->'}))
     .pipe(g.inject(gulp.src('./dist/' + bower.name + '.min.{js,css}'), {ignorePath: 'dist'}))
@@ -312,7 +312,7 @@ gulp.task('serve', ['clean'], function () {
   gulp.start('watch');
 });
 
-gulp.task('watch', ['statics', 'default'], function () {
+gulp.task('watch', ['statics', 'default', 'imagemin'], function () {
 //  gulp.src('./src/app/assets/**/*.*').pipe(gulp.dest('.tmp/assets/'));
   isWatching = true;
   // Initiate livereload server:
