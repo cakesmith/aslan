@@ -177,8 +177,11 @@ gulp.task('templates-dist', function () {
  * All AngularJS templates/partials as a stream
  */
 function templateFiles(opt) {
-  return gulp.src(['./src/app/**/*.html', '!./src/app/index.html'], opt)
-    .pipe(opt && opt.min ? g.htmlmin(htmlminOpts) : noop());
+  return es.merge(
+    gulp.src('./src/app/**/*.md')
+      .pipe(g.markdown()),
+    gulp.src(['./src/app/**/*.html', '!./src/app/index.html'], opt)
+      .pipe(opt && opt.min ? g.htmlmin(htmlminOpts) : noop()));
 }
 
 /**
@@ -240,23 +243,23 @@ function index() {
   return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src(bowerFiles(), opt), {ignorePath: 'bower_components', starttag: '<!-- inject:vendor:{{ext}} -->'}))
     .pipe(g.inject(es.merge(appFiles(), cssFiles(opt)), {ignorePath: ['.tmp', 'src/app']}))
-    .pipe(g.inject(contentFiles(), {starttag: '<!-- inject:content -->', transform: extractContent}))
+//    .pipe(g.inject(contentFiles(), {starttag: '<!-- inject:content -->', transform: extractContent}))
     .pipe(gulp.dest('./src/app/'))
     .pipe(g.embedlr())
     .pipe(gulp.dest('./.tmp/'))
     .pipe(livereload());
 }
 
-function contentFiles() {
-  return es.merge(gulp.src(['./src/app/templates/**/*.md'])
-      .pipe(g.markdown()),
-    gulp.src(['./src/app/templates/**/*.html']))
-}
+//function contentFiles() {
+//  return es.merge(gulp.src(['./src/app/templates/**/*.md'])
+//      .pipe(g.markdown()),
+//    gulp.src(['./src/app/templates/**/*.html']))
+//}
 
-function extractContent(filePath, file) {
-  // return file contents as string
-  return file.contents.toString('utf8');
-}
+//function extractContent(filePath, file) {
+//  // return file contents as string
+//  return file.contents.toString('utf8');
+//}
 
 /**
  * Assets

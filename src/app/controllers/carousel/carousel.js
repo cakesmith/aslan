@@ -28,10 +28,10 @@
     });
   });
 
-  carousel.controller('CarouselCtrl', function ($scope, slideService) {
+  carousel.controller('CarouselCtrl', function ($scope, buildSlides) {
 
     $scope.myInterval = 5000;
-    $scope.slides = slideService.slides;
+    $scope.slides = buildSlides();
 
   });
 

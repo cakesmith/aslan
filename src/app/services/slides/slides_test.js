@@ -2,7 +2,7 @@ describe('slides Service', function () {
   'use strict';
 
 
-  var slideService;
+  var slides;
   var base, prefix, suffix;
 
   function checkSlideUrl(url, slide) {
@@ -18,20 +18,21 @@ describe('slides Service', function () {
 
   describe('initial values', function () {
 
-    beforeEach(inject(function (_slideService_) {
-      base = '/assets/images/';
-      prefix = 'IMG_';
-      suffix = '.JPG';
-      slideService = new _slideService_(base, prefix, suffix);
+    beforeEach(inject(function (buildSlides, slideDefaults) {
+      base = slideDefaults.base;
+      prefix = slideDefaults.prefix;
+      suffix = slideDefaults.suffix;
+
+      slides = buildSlides();
     }));
 
     it('should load the slides', inject(function () {
 
-      expect(slideService.slides).not.toBeUndefined();
+      expect(slides).not.toBeUndefined();
 
-      expect(slideService.slides).toEqual(jasmine.any(Array));
+      expect(slides).toEqual(jasmine.any(Array));
 
-      angular.forEach(slideService.slides, function (slide) {
+      angular.forEach(slides, function (slide) {
 
         expect(slide).toEqual(jasmine.any(Object));
         expect(slide.text).toEqual(jasmine.any(String));
@@ -47,10 +48,9 @@ describe('slides Service', function () {
 
     }));
 
-
     it('should initialize the slides to default values', function () {
 
-      angular.forEach(slideService.slides, function (slide) {
+      angular.forEach(slides, function (slide) {
 
         var url = slide.url();
         expect(slide.selected).toEqual(0);
@@ -61,7 +61,7 @@ describe('slides Service', function () {
 
     it('should select the next slide', function () {
 
-      angular.forEach(slideService.slides, function (slide, index) {
+      angular.forEach(slides, function (slide) {
 
         expect(slide.selected).toEqual(0);
 
@@ -85,16 +85,16 @@ describe('slides Service', function () {
 
   describe('New values', function () {
 
-    beforeEach(inject(function (_slideService_) {
+    beforeEach(inject(function (buildSlides) {
       base = 'http://gdriv.es/aslanelectric';
       prefix = 'image_';
       suffix = '.gif';
-      slideService = new _slideService_(base, prefix, suffix);
+      slides = buildSlides({base: base, prefix: prefix, suffix: suffix});
     }));
 
     it('should be able to be reinitialized to new values', function () {
 
-      angular.forEach(slideService.slides, function (slide) {
+      angular.forEach(slides, function (slide) {
         var url = slide.url();
         expect(slide.selected).toEqual(0);
         checkSlideUrl(url, slide);

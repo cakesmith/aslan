@@ -1,18 +1,21 @@
 (function (preloader) {
   'use strict';
 
-  preloader.controller('preloadCtrl', function ($scope, slideService) {
+  preloader.controller('preloadCtrl', function ($scope, buildSlides) {
 
-    $scope.slides = slideService.slides;
+    $scope.urls = [];
 
+    angular.forEach(buildSlides(), function (slide) {
+      angular.forEach(slide.ids, function (id, index) {
+        $scope.urls.push(slide.url(index));
+      });
+    });
   });
 
   preloader.directive('preloader', function () {
 
     return {
-      template  : '<div ng-repeat="slide in slides">' +
-        '<img ng-repeat="id in slide.ids track by $index" ng-src="{{ $parent.slide.url($index) }}" width="1" height="1">' +
-        '</div>',
+      template: '<img ng-repeat="url in urls" ng-src="{{url}}" width="1" height="1">',
       controller: 'preloadCtrl',
       restrict  : 'E'
     }

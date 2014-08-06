@@ -2,31 +2,33 @@ describe('preloader', function () {
 
   'use strict';
 
-  var element, scope, slideService;
+  var element, scope, imageSvc;
 
   beforeEach(module('aslan.preloader'));
 
   beforeEach(module(function ($provide) {
 
-    function urlFn(index) {
-      return 'http://' + index + '/' + this.ids[index];
-    }
-
-
-    slideService = {
+    imageSvc = {
       slides: [
+
         {
-          url: urlFn,
           ids: ['1234']
         },
         {
-          url: urlFn,
           ids: ['5678', '0123']
         }
 
-      ]};
+      ]
+    };
 
-    $provide.value('slideService', slideService);
+    var defaults = {
+      base  : 'http://',
+      prefix: 'prefix.',
+      suffix: '.jpg'
+    };
+
+    $provide.value('images', imageSvc);
+    $provide.value('slideDefaults', defaults);
 
 
   }));
@@ -35,11 +37,8 @@ describe('preloader', function () {
   beforeEach(inject(function ($rootScope, $compile) {
 
     var tpl = '<preloader></preloader>';
-
     scope = $rootScope.$new();
-
     element = $compile(tpl)(scope);
-
     scope.$digest();
 
   }));
@@ -53,9 +52,10 @@ describe('preloader', function () {
 
   it('should set the scope to the slide array', function () {
 
-    expect(scope.slides.length).toBe(2);
-    expect(scope.slides).toEqual(slideService.slides);
-
+    expect(scope.urls.length).toBe(3);
+    expect(scope.urls[0]).toEqual('http://prefix.1234.jpg');
+    expect(scope.urls[1]).toEqual('http://prefix.5678.jpg');
+    expect(scope.urls[2]).toEqual('http://prefix.0123.jpg');
 
   });
 
@@ -66,9 +66,9 @@ describe('preloader', function () {
 
     expect(imgs.length).toEqual(3);
 
-    expect(imgs.eq(0).prop('src')).toEqual('http://0/1234');
-    expect(imgs.eq(1).prop('src')).toEqual('http://0/5678');
-    expect(imgs.eq(2).prop('src')).toEqual('http://1/0123');
+    expect(imgs.eq(0).prop('src')).toEqual('http://prefix.1234.jpg/');
+    expect(imgs.eq(1).prop('src')).toEqual('http://prefix.5678.jpg/');
+    expect(imgs.eq(2).prop('src')).toEqual('http://prefix.0123.jpg/');
 
 
   });

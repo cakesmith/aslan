@@ -1,7 +1,6 @@
 (function (aslan) {
   'use strict';
 
-  aslan.value('duScrollOffset', 49);
 
   aslan.run(function ($window, $rootScope) {
 
@@ -53,8 +52,10 @@
   });
 
 }(angular.module('aslan', [
+  'aslan.directives',
   'aslan.controllers',
   'aslan.services',
+  'aslan.values',
   'ngRoute',
   'ngTouch',
   'ui.bootstrap',
