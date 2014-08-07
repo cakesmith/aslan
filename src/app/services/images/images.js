@@ -8,11 +8,7 @@
       {
         text  : 'Commercial',
         href  : '#commercial',
-        ids   : ['6571', '6606'],
-        adjust: {
-          x: -20,
-          y: 10
-        }
+        ids: ['6571', '6606']
       },
 
       {

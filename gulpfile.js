@@ -73,7 +73,6 @@ gulp.task('divshot', ['build-dist'], function () {
 
   push.on('error', function (error) {
     console.log(error.stack);
-    return;
   });
 
   push.stdout.on('data', log);
