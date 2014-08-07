@@ -8,30 +8,30 @@
   z-index: auto;
 
   .navbar-nav {
-    .dropdown-menu {
-      & > li {
-        & > a {
-          margin-top: 2rem;
-          margin-bottom: 2rem;
-          color: $nearWhite;
-          font-size: 2rem;
-        }
-      }
-    }
-  }
-  .dropdown-toggle .glyphicon {
-    float: right;
-  }
-
-  .navbar-nav {
     & > li {
       & > a {
         -webkit-transition: background .3s ease-in-out;
         -moz-transition: background .3s ease-in-out;
         transition: background .3s ease-in-out;
         color: $nearWhite;
+        font-size: 3vh;
       }
     }
+    .dropdown-menu {
+      & > li {
+        & > a {
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+          color: $nearWhite;
+          font-size: 3.5vmin;
+
+        }
+      }
+    }
+  }
+
+  .dropdown-toggle .glyphicon {
+    float: right;
   }
 
   .navbar-brand:focus,
@@ -50,12 +50,35 @@
   .navbar-brand {
     color: $nearWhite;
     font-weight: 700;
-    font-size: 9vh;
+    font-size: 5vmin;
   }
 
 }
 
+@media (max-width: 767px) {
+  .navbar-inverse {
+    .navbar-nav {
+      & > li {
+        & > a {
+          font-size: 4vmax;
+        }
+      }
+      .open {
+        .dropdown-menu {
+          & > li {
+            & > a {
+              font-size: 4vmax;
+              color: $nearWhite;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (min-width: 767px) {
+
   .navbar-inverse {
     padding: 20px 0;
     border-bottom: 0;
@@ -64,6 +87,7 @@
     -webkit-transition: all .5s ease-in-out, padding .5s ease-in-out;
     -moz-transition: all .5s ease-in-out, padding .5s ease-in-out;
     transition: all .5s ease-in-out, padding .5s ease-in-out;
+
   }
 
   .navbar-right .dropdown-menu {

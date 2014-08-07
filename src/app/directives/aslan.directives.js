@@ -1,4 +1,5 @@
 angular.module('aslan.directives', [
   'aslan.loadspinner',
-  'aslan.preloader'
+  'aslan.preloader',
+  'aslan.content'
 ]);

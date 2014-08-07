@@ -1,18 +1,3 @@
-.preloader {
-  @media screen {
-    position: absolute;
-    left: -9999px;
-    top: -9999px;
-  }
-  img {
-    display: block;
-    @media print {
-      visibility: hidden;
-      display: none;
-    }
-  }
-
-}
 
 .loading {
 

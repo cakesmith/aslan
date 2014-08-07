@@ -1,6 +1,6 @@
 .content {
-  font-family: 'Lora', serif;
-  h1 {
-    @extend .body;
-  }
+  //  position: relative;
+  //  font-family: 'Lora', serif;
+  background-color: $nearWhite;
+  margin-top: $carouselHeight;
 }

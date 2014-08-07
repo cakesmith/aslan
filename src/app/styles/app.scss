@@ -15,12 +15,6 @@ button {
   font: inherit;
 }
 
-.content {
-  background-color: $nearWhite;
-  margin-top: $carouselHeight;
-  z-index: -1;
-}
-
 @media (max-width: 767px) {
 
   p {
@@ -31,8 +25,9 @@ button {
 
 }
 
+@import "animations";
 @import "navbar";
 @import "carousel";
-@import "loader";
-@import "animations";
+@import "loadspinner";
 @import "content";
+@import "preloader";

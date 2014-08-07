@@ -6,9 +6,13 @@
     var slides = [
 
       {
-        text: 'Commercial',
-        href: '#commercial',
-        ids : ['6571', '6606']
+        text  : 'Commercial',
+        href  : '#commercial',
+        ids   : ['6571', '6606'],
+        adjust: {
+          x: -20,
+          y: 10
+        }
       },
 
       {
@@ -38,7 +42,7 @@
       {
         text: 'Municipal Services',
         href: '#municipal',
-        ids: ['7227', '7164']
+        ids : ['7227', '7164']
       },
 
       {
