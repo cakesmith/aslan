@@ -1,6 +1,7 @@
 $nearWhite: #e2e2e2;
 $nearBlack: #141414;
 $textColor: $nearBlack;
+$carouselHeight: 70vh;
 
 body {
   font: 20px/150% "Raleway", Verdana, sans-serif;
@@ -16,7 +17,7 @@ button {
 
 .content {
   background-color: $nearWhite;
-  margin-top: 40rem;
+  margin-top: $carouselHeight;
   z-index: -1;
 }
 

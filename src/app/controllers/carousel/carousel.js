@@ -30,7 +30,7 @@
 
   carousel.controller('CarouselCtrl', function ($scope, buildSlides) {
 
-    $scope.myInterval = 5000;
+    $scope.myInterval = 7000;
     $scope.slides = buildSlides();
 
   });

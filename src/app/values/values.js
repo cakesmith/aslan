@@ -1,4 +1,5 @@
 (function (values) {
+  'use strict';
 
   values.constant('duScrollOffset', 49);
 

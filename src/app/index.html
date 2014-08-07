@@ -47,6 +47,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" collapse="nav.isCollapsed" ng-cloak>
       <ul class="nav navbar-nav navbar-right">
+        <div class="floater"></div>
         <li dropdown is-open="dropDown.isOpen">
           <a class="dropdown-toggle" href="">Services <span class="glyphicon glyphicon-chevron-down"></span></a>
           <ul class="dropdown-menu" ng-class="{darken: nav.darken}" role="menu">
@@ -57,6 +58,7 @@
             </li>
           </ul>
         </li>
+
         <li>
           <a href="#about" ng-click="navClick($event)" du-smooth-scroll>About</a>
         </li>
@@ -73,14 +75,13 @@
 </nav>
 
 <div ng-controller="CarouselCtrl">
-
+  <div></div>
   <carousel interval="myInterval">
 
     <load-spinner class="loading" color="#000" ng-cloak>
     </load-spinner>
 
     <slide ng-repeat="slide in slides" active="slide.active">
-
       <div class="bg" ng-style="{'background-image':'url(' + slide.url() + ')'}">
         <div class="tint"></div>
       </div>
@@ -200,6 +201,7 @@
   <!-- endinject -->
 </div>
 
+<preloader></preloader>
 
 <!-- inject:vendor:js -->
 <script src="/angular/angular.js"></script>
@@ -211,12 +213,15 @@
 <!-- inject:js -->
 <script src="/aslan-templates.js"></script>
 <script src="/controllers/navbar/navbar.js"></script>
-<script src="/services/loader/loadspinner.js"></script>
+<script src="/directives/loadspinner/loadspinner.js"></script>
+<script src="/services/images/images.js"></script>
+<script src="/values/values.js"></script>
 <script src="/services/slides/slides.js"></script>
 <script src="/controllers/carousel/carousel.js"></script>
-<script src="/controllers/preload/preload.js"></script>
+<script src="/directives/preloader/preloader.js"></script>
 <script src="/services/services.js"></script>
 <script src="/controllers/controllers.js"></script>
+<script src="/directives/aslan.directives.js"></script>
 <script src="/app.js"></script>
 <!-- endinject -->
 </body>

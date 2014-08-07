@@ -1,6 +1,6 @@
 {
   "name"           : "aslan",
-  "version"        : "0.1.0",
+  "version"        : "0.1.1",
   "private"        : true,
   "scripts"        : {
     "install": "node node_modules/protractor/bin/webdriver-manager update"
@@ -15,6 +15,7 @@
     "gulp-concat"             : "^2.2.0",
     "gulp-csslint"            : "~0.1.4",
     "gulp-embedlr"            : "~0.5.2",
+    "gulp-filesize"           : "0.0.6",
     "gulp-filter"             : "~0.5.0",
     "gulp-header"             : "^1.0.2",
     "gulp-htmlmin"            : "~0.1.2",

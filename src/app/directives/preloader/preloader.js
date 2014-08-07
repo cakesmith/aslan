@@ -15,11 +15,11 @@
   preloader.directive('preloader', function () {
 
     return {
-      template: '<img ng-repeat="url in urls" ng-src="{{url}}" width="1" height="1">',
+      template  : '<img ng-repeat="url in urls" ng-src="{{url}}" width="1" height="1">',
       controller: 'preloadCtrl',
       restrict  : 'E'
-    }
-  })
+    };
+  });
 
 }(angular.module('aslan.preloader', [
   'aslan.slides'

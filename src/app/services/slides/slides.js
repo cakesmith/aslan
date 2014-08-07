@@ -19,14 +19,13 @@
 
         built.selected = 0;
 
-        built.url = image.url
-          ? function () {
-          return url;
-        }
-          : function (id) {
-          var which = id ? this.ids[id] : this.ids[this.selected];
-          return base + prefix + which + suffix;
-        };
+        built.url = image.url ? function () {
+          return image.url;
+        } :
+          function (id) {
+            var which = id ? this.ids[id] : this.ids[this.selected];
+            return base + prefix + which + suffix;
+          };
 
         built.selectNext = function () {
           if (this.ids.length > 1) {

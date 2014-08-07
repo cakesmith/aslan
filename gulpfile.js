@@ -56,7 +56,6 @@ gulp.task('imagemin', function () {
 
     .pipe(gulp.dest('./.tmp/assets/'))
     .pipe(gulp.dest('./dist/assets/'));
-
 });
 
 
@@ -291,7 +290,7 @@ gulp.task('dist', ['clean-dist'], function () {
 });
 
 
-gulp.task('build-dist', ['vendors', 'styles-dist', 'scripts-dist', 'imagemin'], function () {
+gulp.task('build-dist', ['vendors', 'styles-dist', 'scripts-dist', 'assets'], function () {
   return gulp.src('./src/app/index.html')
     .pipe(g.inject(gulp.src('./dist/vendors.min.{js,css}'), {ignorePath: 'dist', starttag: '<!-- inject:vendor:{{ext}} -->'}))
     .pipe(g.inject(gulp.src('./dist/' + bower.name + '.min.{js,css}'), {ignorePath: 'dist'}))
@@ -315,8 +314,8 @@ gulp.task('serve', ['clean'], function () {
   gulp.start('watch');
 });
 
-gulp.task('watch', ['statics', 'default', 'imagemin'], function () {
-//  gulp.src('./src/app/assets/**/*.*').pipe(gulp.dest('.tmp/assets/'));
+gulp.task('watch', ['statics', 'default'], function () {
+  gulp.src('./src/app/assets/**/*.*').pipe(gulp.dest('.tmp/assets/'));
   isWatching = true;
   // Initiate livereload server:
   g.livereload.listen();

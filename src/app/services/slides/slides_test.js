@@ -1,6 +1,8 @@
 describe('slides Service', function () {
   'use strict';
 
+// TODO add test to check if image returns same url
+  // slides.js line 22
 
   var slides;
   var base, prefix, suffix;

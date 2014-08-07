@@ -1,13 +1,20 @@
 (function (images) {
+  'use strict';
 
   images.factory('images', function () {
 
     var slides = [
 
       {
-        text: 'Commercial Lighting',
+        text: 'Commercial',
         href: '#commercial',
-        ids : ['6571']
+        ids : ['6571', '6606']
+      },
+
+      {
+        text: 'Fire Alarm',
+        href: '#firealarm',
+        ids : ['1000']
       },
 
       {
@@ -31,7 +38,7 @@
       {
         text: 'Municipal Services',
         href: '#municipal',
-        ids : ['7152']
+        ids: ['7227', '7164']
       },
 
       {
