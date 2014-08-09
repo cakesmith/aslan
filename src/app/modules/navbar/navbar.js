@@ -1,8 +1,8 @@
 (function (navbar) {
   'use strict';
 
-
   navbar.controller('NavCtrl', function ($scope) {
+
     var nav, dropDown;
 
     $scope.services = [
@@ -62,6 +62,7 @@
     };
 
   });
+
 
 }(angular.module('aslan.navbar', [
 ])));

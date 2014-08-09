@@ -23,6 +23,11 @@ $carouselHeight: 50rem;
 
 }
 
+@mixin brandShadow {
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#0000FF, direction=45);
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
 body {
   font: 20px/150% "Raleway", Verdana, sans-serif;
   color: $textColor;
@@ -35,7 +40,8 @@ button {
   font: inherit;
 }
 
-@import "animations";
+//@import "animations";
+@import "animate";
 @import "navbar2";
 @import "carousel";
 @import "loadspinner";

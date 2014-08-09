@@ -2,25 +2,43 @@
   'use strict';
 
 
-  aslan.run(function ($window, $rootScope) {
+  aslan.run(function ($timeout, $window, $rootScope) {
 
     angular.element($window).bind('scroll', function () {
       $rootScope.$broadcast('scroll', this.pageYOffset);
       $rootScope.$apply();
     });
 
-    $window.scrollTo(0, 0);
+  });
+
+  aslan.factory('scrollOffset', function () {
+
+    var offset = 110;
+
+    var service = function () {
+      return offset;
+    };
+
+    service.set = function (value) {
+      offset = value;
+    };
+
+    return service;
+
   });
 
 // override all local anchor links to use duSmoothScroll
   aslan.config(function ($provide) {
-    $provide.decorator('aDirective', function ($delegate, duSmoothScrollDirective) {
+    $provide.decorator('aDirective', function ($delegate, duSmoothScrollDirective, scrollOffset) {
 
       var duSmoothScroll = duSmoothScrollDirective[0];
       var directive = $delegate[0];
       var compile = directive.compile;
 
       directive.compile = function (element, attrs) {
+
+        attrs.$set('offset', scrollOffset());
+
         if (attrs.duSmoothScroll === undefined) {
           compile(element, attrs);
           return function (scope, element, attrs) {
@@ -33,23 +51,6 @@
 
       return $delegate;
     });
-  });
-
-  aslan.factory('duScrollOffset', function ($window) {
-    return function () {
-      if ($window.innerWidth > 767) {
-        return 165;
-      }
-      else if ($window.innerWidth > 470) {
-        return 90;
-      }
-      else if ($window.innerWidth > 333) {
-        return 85;
-      }
-      else {
-        return 105;
-      }
-    }
   });
 
 

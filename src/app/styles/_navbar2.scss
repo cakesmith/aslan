@@ -1,4 +1,29 @@
+@mixin transition($type) {
+  -webkit-transition: $type .5s ease-in-out;
+  -moz-transition: $type .5s ease-in-out;
+  -ms-transition: $type .5s ease-in-out;
+  -o-transition: $type .5s ease-in-out;
+  transition: $type .5s ease-in-out;
+}
+
+@mixin animate($type, $time) {
+
+  -webkit-animation: $type $time ease;
+  -moz-animation: $type $time ease;
+  -o-animation: $type $time ease;
+  animation: $type $time ease;
+}
+
+$brandBGC: rgba(255, 255, 255, .3);
+
+.navbar-brand {
+  padding: 0;
+}
+
 .navbar-inverse {
+
+  @include transition(background);
+
   border-radius: 0;
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, .3);
@@ -8,103 +33,8 @@
   //background-color: chartreuse;
   //$sanity
 
-  .navbar-nav {
-    li {
-      a:active,
-      a:focus {
-        outline: none;
-        background-color: rgba(255, 255, 255, .3);
-        //background-color: lightslategrey;
-        //$sanity
-      }
+  @media (min-width: 768px) {
 
-      a:hover {
-        background-color: rgba(255, 255, 255, .3);
-      }
-    }
-  }
-
-  .navbar-header {
-    //background-color: green;
-    //$sanity
-  }
-
-  .navbar-brand {
-    position: relative;
-
-    height: 100%;
-    width: 30rem;
-
-    color: $nearWhite;
-    letter-spacing: .2rem;
-    word-spacing: 1rem;
-    font-size: 2.5rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-
-    @include shadow;
-
-    //background-color: khaki;
-    //$sanity
-
-    &:focus,
-    &:active {
-      outline: none;
-      //background-color: #0b041d;
-      //$sanity
-    }
-  }
-
-  .address {
-    word-spacing: .4rem;
-    display: none;
-    //background-color: deepskyblue;
-    //$sanity
-  }
-
-  .phone {
-    color: $nearWhite;
-    @include shadow;
-    //background-color: #7f61e8;
-    //$sanity
-  }
-
-  .nav {
-    .dropdown-toggle {
-      line-height: 0;
-      //background-color: goldenrod;
-      //$sanity
-    }
-  }
-
-  .dropdown-menu {
-    right: auto;
-    //background-color: lawngreen;
-    //$sanity
-    & > li {
-      //background-color: cyan;
-      //$sanity
-      & > a {
-        @include clickable;
-        margin-top: 1rem;
-        font-size: 2rem;
-        //background-color: darkgoldenrod;
-        //$sanity
-      }
-    }
-
-    &.darken {
-      margin-top: 2rem;
-      //background-color: mintcream;
-      //$sanity
-    }
-  }
-
-}
-
-@media(min-width: 768px) {
-
-  .navbar {
     @include clickThrough;
     background-color: transparent;
     border: 0;
@@ -117,25 +47,57 @@
       //background-color: aquamarine;
       //$sanity
     }
+  }
 
-    .navbar-nav {
+  .navbar-nav {
+    & > li {
+      & > a {
+        letter-spacing: .5rem;
+        font-size: 2.5rem;
+        color: $nearWhite;
+        //background-color: darksalmon;
+        //$sanity
+
+        .glyphicon {
+
+          display: block;
+          float: right;
+          //background-color: forestgreen;
+          //$sanity
+        }
+      }
+
+      & > a:active,
+      & > a:focus {
+        outline: none;
+        //background-color: lightslategrey;
+        //$sanity
+      }
+
+      & > a:hover {
+        @include transition(background);
+        background-color: rgba(255, 255, 255, .3);
+      }
+    }
+    @media(min-width: 768px) {
+
       @include clickThrough;
       position: absolute;
       right: 1.5rem;
-      top: 6rem;
+      top: 1rem;
 
       //background-color: gray;
       //$sanity
 
       &.darken {
         @include clickable;
-        top: auto;
+        top: 4.2rem;
         bottom: 2rem;
         //background-color: orchid;
         //$sanity
       }
       & > li {
-        //background-color: #392fff;
+        //        background-color: #392fff;
         //$sanity
 
         & > a {
@@ -147,25 +109,78 @@
           //$sanity
 
           &.darken {
+            margin-top: .75rem;
             //background-color: navy;
             //$sanity
           }
         }
       }
+
+    }
+  }
+
+  .navbar-header {
+
+    //background-color: green;
+    //$sanity
+  }
+
+  .navbar-brand {
+
+    display: inline-block;
+    position: relative;
+    width: 23rem;
+    color: $nearWhite;
+    letter-spacing: .2rem;
+    word-spacing: 1rem;
+    font-size: 2.5rem;
+    padding-top: .2rem;
+    padding-left: .2rem;
+    @include brandShadow;
+
+    //background-color: khaki;
+    //$sanity
+
+    &:focus,
+    &:active {
+      outline: none;
+      //background-color: #0b041d;
+      //$sanity
     }
 
-    .navbar-brand {
+    @media (min-width: 768px) {
+
+      @include boxshadow;
       @include clickThrough;
 
+      width: 30rem;
+      height: 100%;
+      padding-left: 2rem;
       color: $nearWhite;
       font-size: 4rem;
-      padding: 1.5rem;
       letter-spacing: 1rem;
       line-height: 5rem;
-      margin-bottom: .5rem;
-      margin-top: .5rem;
-      @include boxshadow;
-      background-color: rgba(128, 128, 128, .3);
+      background-color: $brandBGC;
+
+      &.darken {
+        @include clickable;
+        @include animate(fadeIn, 1s);
+        width: 67rem;
+        padding-left: .5rem;
+
+        //background-color: cadetblue;
+        //$sanity
+
+        background-color: transparent;
+
+        &:hover {
+          background-color: $brandBGC;
+        }
+        &:focus,
+        &:active {
+          background-color: transparent;
+        }
+      }
 
       //background-color: #aa5567;
       //$sanity
@@ -173,33 +188,31 @@
       &:active,
       &:focus,
       &:hover {
-        background-color: rgba(128, 128, 128, .3);
-
+        background-color: $brandBGC;
         //background-color: mediumorchid;
         //$sanity
       }
 
-      &.darken {
-        @include clickable;
-
-        width: 70rem;
-        padding-top: 0;
-        padding-left: .5rem;
-        background-color: rgba(1, 1, 1, .5);
-
-        //background-color: cadetblue;
-        //$sanity
-      }
     }
-    .address {
-      margin-top: 20rem;
+
+  }
+
+  .address {
+    word-spacing: .4rem;
+    display: none;
+    @include shadow;
+    //background-color: deepskyblue;
+    //$sanity
+
+    @media(min-width: 768px) {
+      margin-top: 11rem;
       font-size: 3rem;
       display: block;
       color: $nearWhite;
       @include shadow;
       @include boxshadow;
       background-color: $nearBlack;
-      padding: .5rem;
+      padding: 5rem 1rem 1rem 1rem;
 
       //background-color: fuchsia;
       //$sanity
@@ -213,23 +226,90 @@
         //background-color: darksalmon;
         //$sanity
       }
+
     }
   }
 
   .phone {
-    margin-top: 1rem;
-    font-size: 3rem;
-    font-weight: 700;
-    text-align: center;
+    color: $nearWhite;
     @include shadow;
-    //background-color: olivedrab;
+
+    //background-color: #7f61e8;
     //$sanity
 
-    &.darken {
-      padding-top: 2rem;
-      padding-bottom: 1rem;
+    @media(min-width: 768px) {
+      color: $nearWhite;
+      float: right;
+      font-size: 3rem;
+      font-weight: 700;
+      width: 22rem;
+      padding-top: .2rem;
+      padding-bottom: .7rem;
+      text-align: center;
+      @include shadow;
+      //background-color: olivedrab;
+      //$sanity
+
+      &.darken {
+        padding-top: 0;
+        padding-bottom: 1rem;
+        float: left;
+
+        //background-color: firebrick;
+        //$sanity
+      }
+    }
+  }
+
+  .nav {
+    .dropdown-toggle {
+
       //background-color: firebrick;
       //$sanity
     }
   }
+
+  .dropdown-menu {
+
+    right: auto;
+    background-color: rgba(1, 1, 1, .5);
+    background-clip: border-box;
+    //        background-color: lawngreen;
+    //    $sanity
+
+    &.darken {
+
+      background-color: $nearBlack;
+      //background-color: hotpink;
+      //$sanity
+    }
+
+    & > li {
+      //background-color: cyan;
+      //$sanity
+      & > a {
+
+        color: $nearWhite;
+        @include shadow;
+        @include clickable;
+        margin-top: 1rem;
+        font-size: 2rem;
+
+        background-color: transparent;
+
+        //background-color: darkgoldenrod;
+        //$sanity
+
+        &:hover {
+
+          background-color: rgba(255, 255, 255, .4);
+
+        }
+      }
+
+    }
+  }
 }
+
+
+
