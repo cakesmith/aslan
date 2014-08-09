@@ -38,7 +38,7 @@
   aslan.factory('duScrollOffset', function ($window) {
     return function () {
       if ($window.innerWidth > 767) {
-        return 145;
+        return 165;
       }
       else if ($window.innerWidth > 470) {
         return 90;

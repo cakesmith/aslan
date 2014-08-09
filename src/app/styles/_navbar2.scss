@@ -3,7 +3,7 @@
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, .3);
   text-transform: uppercase;
-  //  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   z-index: auto;
   //background-color: chartreuse;
   //$sanity
@@ -105,6 +105,7 @@
 @media(min-width: 768px) {
 
   .navbar {
+
     @include clickThrough;
     background-color: transparent;
     border: 0;
@@ -157,15 +158,14 @@
     .navbar-brand {
       @include clickThrough;
 
+      width: 60rem;
       color: $nearWhite;
       font-size: 4rem;
       padding: 1.5rem;
-      letter-spacing: 1rem;
+      letter-spacing: .5rem;
       line-height: 5rem;
       margin-bottom: .5rem;
       margin-top: .5rem;
-      @include boxshadow;
-      background-color: rgba(128, 128, 128, .3);
 
       //background-color: #aa5567;
       //$sanity
@@ -173,7 +173,7 @@
       &:active,
       &:focus,
       &:hover {
-        background-color: rgba(128, 128, 128, .3);
+        //        background-color: rgba(128, 128, 128, .3);
 
         //background-color: mediumorchid;
         //$sanity
@@ -185,21 +185,17 @@
         width: 70rem;
         padding-top: 0;
         padding-left: .5rem;
-        background-color: rgba(1, 1, 1, .5);
+        //        background-color: rgba(1, 1, 1, .5);
 
         //background-color: cadetblue;
         //$sanity
       }
     }
     .address {
-      margin-top: 20rem;
       font-size: 3rem;
       display: block;
       color: $nearWhite;
       @include shadow;
-      @include boxshadow;
-      background-color: $nearBlack;
-      padding: .5rem;
 
       //background-color: fuchsia;
       //$sanity
@@ -220,7 +216,7 @@
     margin-top: 1rem;
     font-size: 3rem;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     @include shadow;
     //background-color: olivedrab;
     //$sanity
