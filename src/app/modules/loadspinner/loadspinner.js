@@ -14,7 +14,7 @@
 
   loadspinner.directive('loadSpinner', function () {
     return {
-      templateUrl: '/aslan/directives/loadspinner/loadspinner.html',
+      templateUrl: '/aslan/modules/loadspinner/loadspinner.html',
       restrict   : 'EA',
       controller : 'spinController'
     };

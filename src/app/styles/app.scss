@@ -1,10 +1,26 @@
 $nearWhite: #e2e2e2;
 $nearBlack: #141414;
 $textColor: $nearBlack;
-$carouselHeight: 70vh;
+$carouselHeight: 50rem;
+
+@mixin clickThrough {
+  pointer-events: none;
+}
+
+@mixin clickable {
+  pointer-events: auto;
+}
+
+@mixin boxshadow {
+  -webkit-box-shadow: 0 .7rem 5px rgba(1, 1, 1, .3);
+  -moz-box-shadow: 0 .7rem 5px rgba(1, 1, 1, .3);
+  box-shadow: 0 .7rem 5px rgba(1, 1, 1, .3);
+}
 
 @mixin shadow {
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#0000FF, direction=45);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+
 }
 
 body {
@@ -19,6 +35,13 @@ button {
   font: inherit;
 }
 
+@import "animations";
+@import "navbar2";
+@import "carousel";
+@import "loadspinner";
+@import "content";
+@import "preloader";
+
 @media (max-width: 767px) {
 
   p {
@@ -26,12 +49,9 @@ button {
     font-size: 20px;
     line-height: 1.6;
   }
-
 }
 
-@import "animations";
-@import "navbar";
-@import "carousel";
-@import "loadspinner";
-@import "content";
-@import "preloader";
+
+
+
+

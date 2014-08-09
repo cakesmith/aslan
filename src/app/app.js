@@ -12,24 +12,8 @@
     $window.scrollTo(0, 0);
   });
 
-  aslan.controller('AppCtrl', ['$scope', function ($scope) {
-
-    $scope.services = [
-      {
-        text: 'Industrial Controls',
-        href: '#industrial'
-      },
-      {
-        text: 'Commercial Lighting',
-        href: '#commercial'
-      }
-    ];
-
-  }]);
-
 // override all local anchor links to use duSmoothScroll
   aslan.config(function ($provide) {
-
     $provide.decorator('aDirective', function ($delegate, duSmoothScrollDirective) {
 
       var duSmoothScroll = duSmoothScrollDirective[0];
@@ -50,6 +34,24 @@
       return $delegate;
     });
   });
+
+  aslan.factory('duScrollOffset', function ($window) {
+    return function () {
+      if ($window.innerWidth > 767) {
+        return 145;
+      }
+      else if ($window.innerWidth > 470) {
+        return 90;
+      }
+      else if ($window.innerWidth > 333) {
+        return 85;
+      }
+      else {
+        return 105;
+      }
+    }
+  });
+
 
 }(angular.module('aslan', [
   'aslan.directives',

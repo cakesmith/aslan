@@ -7,8 +7,25 @@
 
     $scope.sections = [
       {
+        name: 'header',
+        href: 'header.html'
+      },
+      {
+        name: 'commercial',
+        href: 'commercial.html'
+
+      },
+      {
+        name: 'fire',
+        href: 'firealarm.html'
+      },
+      {
         name: 'about',
         href: 'about.html'
+      },
+      {
+        name: 'contact',
+        href: 'contact.html'
       }
     ];
 
@@ -21,7 +38,7 @@
   content.directive('content', function () {
     return {
       restrict  : 'E',
-      template  : '<div ng-repeat="section in sections" class="content section.name" ng-include="section.href"></div>',
+      template  : '<div class="content"><div ng-repeat="section in sections" ng-class="section.name" ng-include="section.href"></div></div>',
       controller: 'ContentCtrl'
     };
   });

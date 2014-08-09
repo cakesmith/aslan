@@ -4,7 +4,7 @@ describe('navbar test', function () {
   var rootScope, scope;
 
   var breakpoint = 50;
-  var scrollOffset = 0;
+//  var scrollOffset = 0;
 
   beforeEach(module('aslan.navbar'));
 

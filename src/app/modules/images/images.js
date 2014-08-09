@@ -6,19 +6,19 @@
     var slides = [
 
       {
-        text  : 'Commercial',
-        href  : '#commercial',
-        ids: ['6571', '6606']
+        text: 'Commercial',
+        href: '#commercial',
+        ids : ['6571']
       },
 
       {
         text: 'Fire Alarm',
-        href: '#firealarm',
+        href: '#fire',
         ids : ['1000']
       },
 
       {
-        text: 'Home Automation',
+        text: 'Automation Systems',
         href: '#automation',
         ids : ['6682']
       },
@@ -38,7 +38,7 @@
       {
         text: 'Municipal Services',
         href: '#municipal',
-        ids : ['7227', '7164']
+        ids : ['7164']
       },
 
       {
@@ -50,7 +50,7 @@
       {
         text: 'Solar Energy',
         href: '#solar',
-        ids : ['1001', '1002']
+        ids : ['1002']
       }
 
     ];

@@ -1,7 +1,12 @@
 (function (values) {
   'use strict';
 
-  values.constant('duScrollOffset', 49);
+//  values.constant('duScrollOffset', 95);
+
+//  values.factory('duScrollOffset', function($window) {
+//    console.log('request');
+//    return 95;
+//  });
 
   values.value('slideDefaults', {
     base  : '/assets/images/',

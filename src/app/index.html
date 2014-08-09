@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
   <!-- Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
 
@@ -27,11 +28,14 @@
 
 </head>
 
-<body ng-controller="AppCtrl">
+<body>
 
-<nav ng-controller="NavCtrl" class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+<nav ng-controller="NavCtrl" class="navbar navbar-inverse navbar-fixed-top" ng-class="{darken: nav.darken}"
+     role="navigation"
      ng-class="{darken: nav.darken}">
   <div class="container-fluid">
+
+
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" ng-click="navToggle()">
@@ -40,42 +44,56 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#top" ng-click="navClick($event)" du-smooth-scroll>Aslan Electric,
-        Inc.</a>
+
+      <div class="navbar-brand">
+        <a ng-class="{darken: nav.darken}" class="navbar-brand" href="#top" ng-click="navClick($event)"
+           du-smooth-scroll>Aslan Electric, Inc.</a>
+      </div>
+
+
+      <div class="address" ng-class="{darken: nav.darken}">842 Upper Union St</br>Franklin, MA 02038<br/></div>
+
+
+      <div class="phone" ng-class="{darken: nav.darken}">
+        (508)528-9753
+      </div>
+
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" collapse="nav.isCollapsed" ng-cloak>
-      <ul class="nav navbar-nav navbar-right">
-        <div class="floater"></div>
+      <ul class="nav navbar-nav navbar-right" ng-class="{darken: nav.darken}">
         <li dropdown is-open="dropDown.isOpen">
-          <a class="dropdown-toggle" href="">Services <span class="glyphicon glyphicon-chevron-down"></span></a>
+
+          <a ng-class="{darken: nav.darken}" class="dropdown-toggle" href="">Services <span
+              class="glyphicon glyphicon-chevron-down"></span></a>
           <ul class="dropdown-menu" ng-class="{darken: nav.darken}" role="menu">
 
             <li ng-repeat="service in services">
-              <a ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll>{{ service.text }}</a>
+              <a ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll><span
+                  class="dot glyphicon glyphicon-chevron-right"></span> {{ service.text }}</a>
 
             </li>
           </ul>
         </li>
 
         <li>
-          <a href="#about" ng-click="navClick($event)" du-smooth-scroll>About</a>
+          <a ng-class="{darken: nav.darken}" href="#about" ng-click="navClick($event)" du-smooth-scroll>About</a>
         </li>
         <li>
-          <a href="#contact" ng-click="navClick($event)" du-smooth-scroll>Contact</a>
+          <a ng-class="{darken: nav.darken}" href="#contact" ng-click="navClick($event)" du-smooth-scroll>Contact</a>
         </li>
 
       </ul>
 
     </div>
-    <!-- /.navbar-collapse -->
+
   </div>
-  <!-- /.container-fluid -->
 </nav>
 
 <div ng-controller="CarouselCtrl">
-  <div></div>
+
   <carousel interval="myInterval">
 
     <load-spinner class="loading" color="#000" ng-cloak>
@@ -88,12 +106,13 @@
 
       <div class="carousel-caption" ng-cloak>
         <div class="shadow">
-          <a ng-href="{{ slide.href }}">{{slide.text}}</a>
+          <a ng-cloak ng-href="{{ slide.href }}">{{slide.text}}</a>
         </div>
       </div>
 
     </slide>
   </carousel>
+
 </div>
 
 <content></content>
@@ -109,17 +128,17 @@
 <!-- endinject -->
 <!-- inject:js -->
 <script src="/aslan-templates.js"></script>
-<script src="/controllers/navbar/navbar.js"></script>
-<script src="/directives/content/content.js"></script>
-<script src="/directives/loadspinner/loadspinner.js"></script>
-<script src="/services/images/images.js"></script>
-<script src="/values/values.js"></script>
-<script src="/services/slides/slides.js"></script>
-<script src="/controllers/carousel/carousel.js"></script>
-<script src="/directives/preloader/preloader.js"></script>
-<script src="/services/services.js"></script>
-<script src="/controllers/controllers.js"></script>
-<script src="/directives/aslan.directives.js"></script>
+<script src="/modules/content/content.js"></script>
+<script src="/modules/images/images.js"></script>
+<script src="/modules/loadspinner/loadspinner.js"></script>
+<script src="/modules/navbar/navbar.js"></script>
+<script src="/modules/values.js"></script>
+<script src="/modules/slides/slides.js"></script>
+<script src="/modules/carousel/carousel.js"></script>
+<script src="/modules/preloader/preloader.js"></script>
+<script src="/modules/services.js"></script>
+<script src="/modules/controllers.js"></script>
+<script src="/modules/directives.js"></script>
 <script src="/app.js"></script>
 <!-- endinject -->
 </body>

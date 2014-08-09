@@ -1,0 +1,235 @@
+.navbar-inverse {
+  border-radius: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .3);
+  text-transform: uppercase;
+  //  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  z-index: auto;
+  //background-color: chartreuse;
+  //$sanity
+
+  .navbar-nav {
+    li {
+      a:active,
+      a:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, .3);
+        //background-color: lightslategrey;
+        //$sanity
+      }
+
+      a:hover {
+        background-color: rgba(255, 255, 255, .3);
+      }
+    }
+  }
+
+  .navbar-header {
+    //background-color: green;
+    //$sanity
+  }
+
+  .navbar-brand {
+    position: relative;
+
+    height: 100%;
+    width: 30rem;
+
+    color: $nearWhite;
+    letter-spacing: .2rem;
+    word-spacing: 1rem;
+    font-size: 2.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+
+    @include shadow;
+
+    //background-color: khaki;
+    //$sanity
+
+    &:focus,
+    &:active {
+      outline: none;
+      //background-color: #0b041d;
+      //$sanity
+    }
+  }
+
+  .address {
+    word-spacing: .4rem;
+    display: none;
+    //background-color: deepskyblue;
+    //$sanity
+  }
+
+  .phone {
+    color: $nearWhite;
+    @include shadow;
+    //background-color: #7f61e8;
+    //$sanity
+  }
+
+  .nav {
+    .dropdown-toggle {
+      line-height: 0;
+      //background-color: goldenrod;
+      //$sanity
+    }
+  }
+
+  .dropdown-menu {
+    right: auto;
+    //background-color: lawngreen;
+    //$sanity
+    & > li {
+      //background-color: cyan;
+      //$sanity
+      & > a {
+        @include clickable;
+        margin-top: 1rem;
+        font-size: 2rem;
+        //background-color: darkgoldenrod;
+        //$sanity
+      }
+    }
+
+    &.darken {
+      margin-top: 2rem;
+      //background-color: mintcream;
+      //$sanity
+    }
+  }
+
+}
+
+@media(min-width: 768px) {
+
+  .navbar {
+    @include clickThrough;
+    background-color: transparent;
+    border: 0;
+    //background-color: darkmagenta;
+    //$sanity
+    &.darken {
+      @include clickable;
+      background-color: rgba(1, 1, 1, .9);
+      border-bottom: 1px solid rgba(255, 255, 255, .3);
+      //background-color: aquamarine;
+      //$sanity
+    }
+
+    .navbar-nav {
+      @include clickThrough;
+      position: absolute;
+      right: 1.5rem;
+      top: 6rem;
+
+      //background-color: gray;
+      //$sanity
+
+      &.darken {
+        @include clickable;
+        top: auto;
+        bottom: 2rem;
+        //background-color: orchid;
+        //$sanity
+      }
+      & > li {
+        //background-color: #392fff;
+        //$sanity
+
+        & > a {
+          @include clickable;
+          @include shadow;
+          color: $nearWhite;
+
+          //background-color: mediumseagreen;
+          //$sanity
+
+          &.darken {
+            //background-color: navy;
+            //$sanity
+          }
+        }
+      }
+    }
+
+    .navbar-brand {
+      @include clickThrough;
+
+      color: $nearWhite;
+      font-size: 4rem;
+      padding: 1.5rem;
+      letter-spacing: 1rem;
+      line-height: 5rem;
+      margin-bottom: .5rem;
+      margin-top: .5rem;
+      @include boxshadow;
+      background-color: rgba(128, 128, 128, .3);
+
+      //background-color: #aa5567;
+      //$sanity
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: rgba(128, 128, 128, .3);
+
+        //background-color: mediumorchid;
+        //$sanity
+      }
+
+      &.darken {
+        @include clickable;
+
+        width: 70rem;
+        padding-top: 0;
+        padding-left: .5rem;
+        background-color: rgba(1, 1, 1, .5);
+
+        //background-color: cadetblue;
+        //$sanity
+      }
+    }
+    .address {
+      margin-top: 20rem;
+      font-size: 3rem;
+      display: block;
+      color: $nearWhite;
+      @include shadow;
+      @include boxshadow;
+      background-color: $nearBlack;
+      padding: .5rem;
+
+      //background-color: fuchsia;
+      //$sanity
+
+      &.darken {
+        margin: 0;
+        opacity: 0;
+        height: 0;
+        visibility: hidden;
+
+        //background-color: darksalmon;
+        //$sanity
+      }
+    }
+  }
+
+  .phone {
+    margin-top: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    @include shadow;
+    //background-color: olivedrab;
+    //$sanity
+
+    &.darken {
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+      //background-color: firebrick;
+      //$sanity
+    }
+  }
+}

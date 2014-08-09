@@ -4,7 +4,7 @@
     "/dist/aslan.min.js",
     "/dist/aslan.min.css"
   ],
-  "version"        : "0.1.3",
+  "version"        : "0.1.8",
   "description"    : "TODO",
   "authors"        : [
     "TODO"
@@ -22,7 +22,7 @@
     "angular"          : "~1.2.14",
     "angular-route"    : "~1.2.14",
     "angular-bootstrap": "~0.11.0",
-    "angular-scroll"   : "~0.6.1",
+    "angular-scroll"   : "https://github.com/cakesmith/angular-scroll.git",
     "angular-touch"    : "~1.2.21"
   },
   "devDependencies": {

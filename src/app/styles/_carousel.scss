@@ -25,6 +25,8 @@
       width: 2rem;
       margin-bottom: -1rem;
       border-width: .5px;
+
+      // droplet effect
       //    background: rgba(255,255,255,.03) -webkit-radial-gradient(center 75%, ellipse contain, #ffffff, rgba(255,255,255,0) 60%);
       //    background: rgba(255,255,255,.03) -moz-radial-gradient(25% 25%, ellipse contain, #ffffff, rgba(255,255,255,0) 60%);
 
@@ -46,24 +48,30 @@
   }
   .carousel-caption {
     letter-spacing: .3rem;
-    font-size: 2.5rem;
+
+    line-height: 4rem;
+    font-family: 'Roboto Slab', serif;
+    font-size: 3rem;
+
     position: absolute;
-    width: 50rem;
+    width: 25rem;
     left: 50%;
-    margin-left: -25rem;
+    margin-left: -12.5rem;
+
+    bottom: 7%;
+
+    //    top: 50%;
 
     .shadow {
       position: relative;
-      margin-bottom: 2rem;
-      width: 35rem;
-      height: 3rem;
-      display: inline-block;
+
       background-color: rgba(1, 1, 1, .5);
       border-radius: 2rem;
       box-shadow: 0 0 1rem rgba(1, 1, 1, .9);
 
     }
     a {
+
       &:hover {
         cursor: pointer;
       }
