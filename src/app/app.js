@@ -4,16 +4,11 @@
   aslan.directive('getHeight', function () {
     return {
       restrict: 'A',
-
-      controller: function ($scope) {
-
-        $scope.$on('getHeight', function () {
-          $scope.$emit('returnHeight', $scope.element.offsetHeight);
-        });
-
-      },
+      scope     : false,
       link      : function (scope, element) {
-        scope.element = element[0];
+        scope.$on('getHeight', function () {
+          scope.$emit('returnHeight', element[0].offsetHeight);
+        });
       }
     }
   });
@@ -27,18 +22,18 @@
 
     //TODO change this to use a hidden div to check height instead of this abomination
 
+    angular.element($window).bind('load', function () {
+      $rootScope.$broadcast('darken', true);
+    });
+
     $rootScope.$on('darkened', function (event, dark) {
       if (dark === true) {
         $timeout(function () {
           $rootScope.$broadcast('getHeight');
-        }, 50);
+        }, 200);
       } else {
         $window.scrollTo(0, 0);
       }
-    });
-
-    angular.element($window).bind('load', function () {
-      $rootScope.$broadcast('darken', true);
     });
 
     $rootScope.$on('returnHeight', function (event, height) {
