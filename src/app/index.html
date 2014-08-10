@@ -30,7 +30,7 @@
 
 <body>
 
-<nav ng-controller="NavCtrl" class="navbar navbar-inverse navbar-fixed-top" ng-class="{darken: nav.darken}"
+<nav ng-controller="NavCtrl" get-height class="navbar navbar-inverse navbar-fixed-top" ng-class="{darken: nav.darken}"
      role="navigation"
      ng-class="{darken: nav.darken}">
   <div class="container-fluid">
@@ -63,7 +63,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" collapse="nav.isCollapsed" ng-cloak>
+    <div class="collapse navbar-collapse" collapse="nav.isCollapsed">
       <ul class="nav navbar-nav navbar-right" ng-class="{darken: nav.darken}">
         <li dropdown is-open="dropDown.isOpen">
 
@@ -72,7 +72,7 @@
           <ul class="dropdown-menu" ng-class="{darken: nav.darken}" role="menu">
 
             <li ng-repeat="service in services">
-              <a ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll><span
+              <a ng-cloak ng-href="{{ service.href }}" ng-click="navClick($event)" du-smooth-scroll><span
                   class="dot glyphicon glyphicon-chevron-right"></span> {{ service.text }}</a>
 
             </li>
