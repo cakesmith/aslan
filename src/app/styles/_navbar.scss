@@ -1,285 +1,316 @@
+@mixin transition($type) {
+  -webkit-transition: $type .5s ease-in-out;
+  -moz-transition: $type .5s ease-in-out;
+  -ms-transition: $type .5s ease-in-out;
+  -o-transition: $type .5s ease-in-out;
+  transition: $type .5s ease-in-out;
+}
+
+@mixin animate($type, $time) {
+
+  -webkit-animation: $type $time ease;
+  -moz-animation: $type $time ease;
+  -o-animation: $type $time ease;
+  animation: $type $time ease;
+}
+
+$brandBGC: rgba(255, 255, 255, .3);
+
+.navbar-brand {
+  padding: 0;
+}
+
 .navbar-inverse {
+
+  @include transition(background);
+
   border-radius: 0;
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, .3);
   text-transform: uppercase;
-  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: $nearBlack;
+  //  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   z-index: auto;
+  //background-color: chartreuse;
+  //$sanity
 
-  .navbar-header {
-    //    background-color: khaki;
-    width: 25rem;
-    //position: relative;
+  @media (min-width: 768px) {
 
-  }
-  .container-fluid {
-    //    background-color: #3a9caf;
-  }
-
-  .navbar-collapse {
-    //    background-color: yellow;
-    float: right;
+    @include clickThrough;
+    background-color: transparent;
+    border: 0;
+    //background-color: darkmagenta;
+    //$sanity
+    &.darken {
+      @include clickable;
+      background-color: rgba(1, 1, 1, .9);
+      border-bottom: 1px solid rgba(255, 255, 255, .3);
+      //background-color: aquamarine;
+      //$sanity
+    }
   }
 
   .navbar-nav {
     & > li {
       & > a {
-        -webkit-transition: .5s all ease-in-out;
-        -moz-transition: .5s all ease-in-out;
-        -ms-transition: .5s all ease-in-out;
-        -o-transition: .5s all ease-in-out;
-        transition: .5s all ease-in-out;
-        color: $nearWhite;
+        letter-spacing: .5rem;
         font-size: 2.5rem;
-        @include shadow;
+        color: $nearWhite;
+        //background-color: darksalmon;
+        //$sanity
+
+        .glyphicon {
+
+          display: block;
+          float: right;
+          //background-color: forestgreen;
+          //$sanity
+        }
+      }
+
+      & > a:active,
+      & > a:focus {
+        outline: none;
+        //background-color: lightslategrey;
+        //$sanity
+      }
+
+      & > a:hover {
+        @include transition(background);
+        background-color: rgba(255, 255, 255, .3);
       }
     }
+    @media(min-width: 768px) {
 
-    .dropdown-menu {
+      @include clickThrough;
+      position: absolute;
+      right: 1.5rem;
+      top: 1rem;
+
+      //background-color: gray;
+      //$sanity
+
+      &.darken {
+        @include clickable;
+        top: 4.2rem;
+        bottom: 2rem;
+        //background-color: orchid;
+        //$sanity
+      }
       & > li {
+        //background-color: #392fff;
+        //$sanity
+
         & > a {
-          margin-top: 1rem;
+          @include clickable;
+          @include shadow;
           color: $nearWhite;
-          font-size: 2rem;
-        }
-      }
-    }
 
-    .dot {
-      color: $nearWhite;
-      font-size: 3vmin;
-    }
-  }
+          //background-color: mediumseagreen;
+          //$sanity
 
-  .dropdown-toggle .glyphicon {
-    float: right;
-    //    top: -4px;
-    left: 4px;
-
-    //    text-shadow: 2px 5px 4px rgba(1, 1, 1, .7);
-  }
-
-  .navbar-brand:focus,
-  .navbar-brand:active,
-  .navbar-nav li a:focus,
-  .navbar-nav li a:active {
-    outline: none;
-  }
-
-  .navbar-nav li a:hover,
-  .navbar-nav .active {
-    outline: none;
-    background-color: rgba(255, 255, 255, .3);
-  }
-
-  .navbar-brand {
-
-    -webkit-transition: padding .5s ease;
-    -moz-transition: padding .5s ease;
-    -ms-transition: padding .5s ease;
-    -o-transition: padding .5s ease;
-    transition: padding .5s ease;
-
-    color: $nearWhite;
-    font-weight: 700;
-    font-size: 3.75rem;
-    @include shadow;
-    width: 40vw;
-    height: 100%;
-    line-height: 100%;
-    //    background-color: green;
-
-    //height: 0;
-    //    padding-top: 2.5rem;
-    //    padding: 2rem;
-    
-
-  }
-
-  .address {
-    padding-top: 1rem;
-    font-size: 2.8rem;
-    color: $nearWhite;
-    @include shadow;
-  }
-
-  .phone {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    font-size: 3rem;
-    color: $nearWhite;
-    padding-top: 3rem;
-    width: 21rem;
-
-    @include shadow;
-
-    //background-color: navy;
-
-  }
-  .brand-wrapper {
-    display: inline-block;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar-inverse {
-    .navbar-nav {
-      & > li {
-        & > a {
-          font-size: 4vmax;
-        }
-      }
-      .open {
-        .dropdown-menu {
-          & > li {
-            padding-top: 1vmax;
-            & > a {
-              font-size: 4vmax;
-              color: $nearWhite;
-            }
+          &.darken {
+            margin-top: .75rem;
+            //background-color: navy;
+            //$sanity
           }
         }
       }
-    }
 
-    .navbar-header {
-      //      background-color: red;
-      //      float: right;
-      //      position: relative;
-      //      width: 100%;
-      //      height: 16rem;
-
-    }
-
-    .navbar-brand {
-      top: 1rem;
-      //      background-color: #ff94a5;
-      position: absolute;
-      left: 0;
-      height: 10px;
-      //      display: inline;
-      //      position: relative;
-      //      line-height: auto;
-      color: $nearWhite;
-      @include shadow;
-      //      float:left;
-      width: 70vw;
-      padding-top: .75rem;
-      //      padding-left: .5rem;
     }
   }
 
-  .address {
-    display: none;
-  }
+  .navbar-header {
 
-  .phone {
-    display: none;
-  }
-}
-
-@media (min-width: 767px) {
-
-  .navbar-inverse {
-    padding: 20px 0;
-    border-bottom: 0;
-    letter-spacing: 1px;
-    background: 0 0;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-
-    pointer-events: none;
-
-    &.darken {
-      pointer-events: auto;
-    }
-
+    //background-color: green;
+    //$sanity
   }
 
   .navbar-brand {
-    pointer-events: auto;
-    &.darken {
-      top: 0;
+
+    display: inline-block;
+    position: relative;
+    width: 23rem;
+    color: $nearWhite;
+    letter-spacing: .2rem;
+    word-spacing: 1rem;
+    font-size: 2.5rem;
+    padding-top: .2rem;
+    padding-left: .2rem;
+    @include brandShadow;
+
+    //background-color: khaki;
+    //$sanity
+
+    &:focus,
+    &:active {
+      outline: none;
+      //background-color: #0b041d;
+      //$sanity
     }
+
+    @media (min-width: 768px) {
+
+      @include boxshadow;
+      @include clickThrough;
+
+      width: 32rem;
+      height: 100%;
+      padding-left: 2rem;
+      color: $nearWhite;
+      font-size: 4rem;
+      letter-spacing: 1rem;
+      line-height: 5rem;
+      background-color: $brandBGC;
+
+      //background-color: #aa5567;
+      //$sanity
+
+      &.darken {
+        @include clickable;
+        @include animate(fadeIn, 1s);
+        width: 67rem;
+        padding-left: .5rem;
+
+        //background-color: cadetblue;
+        //$sanity
+
+        background-color: transparent;
+
+        &:hover {
+          background-color: $brandBGC;
+        }
+        &:focus,
+        &:active {
+          background-color: transparent;
+        }
+      }
+
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: $brandBGC;
+        //background-color: mediumorchid;
+        //$sanity
+      }
+
+    }
+
   }
 
   .address {
-    -webkit-transition: opacity .7s ease;
-    -moz-transition: opacity .7s ease;
-    -ms-transition: opacity .7s ease;
-    -o-transition: opacity .7s ease;
-    transition: opacity .7s ease;
+    word-spacing: .4rem;
+    display: none;
+    @include shadow;
+    //background-color: deepskyblue;
+    //$sanity
 
-    &.darken {
+    @media(min-width: 768px) {
+      margin-top: 11rem;
+      font-size: 3rem;
+      display: block;
+      color: $nearWhite;
+      @include shadow;
+      @include boxshadow;
+      background-color: $nearBlack;
+      padding: 5rem 1rem 1rem 1rem;
 
-      opacity: 0;
-      height: 0;
-      visibility: hidden;
-    }
+      //background-color: fuchsia;
+      //$sanity
 
-  }
-  .phone {
+      &.darken {
+        margin: 0;
+        opacity: 0;
+        height: 0;
+        visibility: hidden;
 
-    -webkit-transition: margin .5s ease;
-    -moz-transition: margin .5s ease;
-    -ms-transition: margin .5s ease;
-    -o-transition: margin .5s ease;
-    transition: margin .5s ease;
-
-    //    background-color: blue;
-
-    &.darken {
-      margin-top: 4rem;
-      //      background-color: chartreuse;
-    }
-  }
-
-  .navbar-nav {
-    & > li {
-
-      margin-top: 1rem;
-      pointer-events: auto;
-
-      & > a.darken {
-
-        -webkit-transition: all .5s ease-in-out;
-        -moz-transition: all .5s ease-in-out;
-        -ms-transition: all .5s ease-in-out;
-        -o-transition: all .5s ease-in-out;
-        transition: all .5s ease-in-out;
-
-        margin-top: 3rem;
-        height: 100%;
+        //background-color: darksalmon;
+        //$sanity
       }
+
+    }
+  }
+
+  .phone {
+    color: $nearWhite;
+    @include shadow;
+
+    //background-color: #7f61e8;
+    //$sanity
+
+    @media(min-width: 768px) {
+      color: $nearWhite;
+      float: right;
+      font-size: 3rem;
+      font-weight: 700;
+      width: 22rem;
+      padding-top: .2rem;
+      padding-bottom: .7rem;
+      text-align: center;
+      @include shadow;
+      //background-color: olivedrab;
+      //$sanity
+
+      &.darken {
+        padding-top: 0;
+        padding-bottom: 1rem;
+        float: left;
+
+        //background-color: firebrick;
+        //$sanity
+      }
+    }
+  }
+
+  .nav {
+    .dropdown-toggle {
+
+      //background-color: firebrick;
+      //$sanity
     }
   }
 
   .dropdown-menu {
 
-    border: none;
-    outline: none;
     right: auto;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(1, 1, 1, .5);
+    background-clip: border-box;
+    //background-color: lawngreen;
+    //    $sanity
+
     &.darken {
+
       background-color: $nearBlack;
+      //background-color: hotpink;
+      //$sanity
+    }
+
+    & > li {
+      //background-color: cyan;
+      //$sanity
+      & > a {
+
+        color: $nearWhite;
+        @include shadow;
+        @include clickable;
+        margin-top: 1rem;
+        font-size: 2rem;
+
+        background-color: transparent;
+
+        //background-color: darkgoldenrod;
+        //$sanity
+
+        &:hover {
+
+          background-color: rgba(255, 255, 255, .4);
+
+        }
+      }
+
     }
   }
-
-  .darken {
-    padding: 0;
-    background-color: $nearBlack;
-    box-shadow: 0 .7rem 5px rgba(1, 1, 1, .3);
-  }
-
-  .navbar.darken {
-    border-bottom: 1px solid rgba(255, 255, 255, .3);
-  }
-
-  .dropdown-menu.dropdownCollapse {
-    //    background-color: rgba(0, 0, 0, .3);
-  }
-
 }
+
+
 

@@ -30,7 +30,7 @@
       if (dark === true) {
         $timeout(function () {
           $rootScope.$broadcast('getHeight');
-        }, 200);
+        }, 150);
       } else {
         $window.scrollTo(0, 0);
       }
