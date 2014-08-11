@@ -1,68 +1,29 @@
 (function (aslan) {
   'use strict';
 
-  aslan.directive('getHeight', function () {
-    return {
-      restrict: 'A',
-      scope     : false,
-      link      : function (scope, element) {
-        scope.$on('getHeight', function () {
-          scope.$emit('returnHeight', element[0].offsetHeight);
-        });
-      }
-    }
-  });
 
-  aslan.run(function ($timeout, $window, $rootScope, duScrollOffset) {
+  aslan.run(function ($timeout, $window, $rootScope) {
 
     angular.element($window).bind('scroll', function () {
       $rootScope.$broadcast('scroll', this.pageYOffset);
       $rootScope.$apply();
     });
 
-    //TODO change this to use a hidden div to check height instead of this abomination
-
-    angular.element($window).bind('load', function () {
-      $rootScope.$broadcast('darken', true);
+    angular.element($window).bind('resize', function () {
+      $rootScope.$broadcast('checkHeight');
     });
 
-    $rootScope.$on('darkened', function (event, dark) {
-      if (dark === true) {
-        $timeout(function () {
-          $rootScope.$broadcast('getHeight');
-        }, 150);
-      } else {
-        $window.scrollTo(0, 0);
-      }
-    });
-
-    $rootScope.$on('returnHeight', function (event, height) {
-      duScrollOffset.set(height);
-      $rootScope.$broadcast('darken', false);
-    });
 
   });
 
-  aslan.factory('duScrollOffset', function ($rootScope) {
+  aslan.factory('duScrollOffset', function ($rootScope, snHeight) {
 
-    var offset = 0;
 
-    $rootScope.$on('setOffset', function (event, newOffset) {
-      console.log('received height ' + newOffset);
-      offset = newOffset;
-    });
-
-    var service = function () {
-      console.log('factory returning offset ' + offset);
-      return offset;
+    return function () {
+      console.log('returning ' + snHeight.height);
+      return snHeight.height;
     };
 
-    service.set = function (value) {
-      console.log('setting value ' + value);
-      offset = value;
-    };
-
-    return service;
 
   });
 

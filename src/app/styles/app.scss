@@ -18,13 +18,13 @@ $carouselHeight: 50rem;
 }
 
 @mixin shadow {
-  filter: progid:DXImageTransform.Microsoft.Shadow(color=#0000FF, direction=45);
+  //  filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction=45);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 
 }
 
 @mixin brandShadow {
-  filter: progid:DXImageTransform.Microsoft.Shadow(color=#0000FF, direction=45);
+  //  filter: progid:DXImageTransform.Microsoft.Shadow(color=#0000FF, direction=45);
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 

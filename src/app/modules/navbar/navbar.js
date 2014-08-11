@@ -50,12 +50,6 @@
       nav.darken = offset > 50;
     });
 
-    $scope.$on('darken', function (event, dark) {
-      console.log('darken ' + dark);
-      nav.darken = dark;
-      $scope.$emit('darkened', dark);
-    });
-
 
     $scope.navClick = function ($event) {
       $event.preventDefault();
