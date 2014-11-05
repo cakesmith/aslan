@@ -18,6 +18,7 @@
   "globals"  : {
     "angular"   : false,
     "beforeEach": false,
+    "afterEach": false,
     "module"    : false,
     "describe"  : false,
     "ddescribe" : false,
